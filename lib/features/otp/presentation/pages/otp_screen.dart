@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_cubit.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_states.dart';
-import 'package:opt_page/features/otp/presentation/widgets/pin_put.dart';
-import 'package:opt_page/features/otp/presentation/widgets/timer.dart';
+import 'package:opt_page/features/otp/presentation/pages/widgets/pin_put.dart';
 import 'package:opt_page/shared/presentation/widgets/button_widget.dart';
 import 'package:opt_page/shared/presentation/widgets/text_widget.dart';
+
+import 'widgets/timer.dart';
 
 class OtpPage extends StatelessWidget {
   const OtpPage({super.key});
@@ -25,7 +26,7 @@ class OtpPage extends StatelessWidget {
             Image.asset("assets/img/logo.png"),
             const TextWidget(
               title: "رمز التحقق",
-              color: Color(0xFFFb92525),
+              color: Color(0xFFb92525),
               fontWeight: FontWeight.bold,
             ),
             const TextWidget(
@@ -36,12 +37,33 @@ class OtpPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            buildPinPut(context),
-           ButtonWidget(
-              onTap: () {},
-              textColor: Colors.white,
-              text: "تحقق",
-              buttonColor: const Color(0xfff2c1d65)),
+            const BuildPinPut(),
+            BlocConsumer<OtpCubit, OtpState>(
+              listener: (context, state) {
+                if (state is OtpInvalid) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                        content:
+                            Text('Invalid PIN. It must be 4 digits long.')),
+                  );
+                } else if (state is OtpValid) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Valid PIN entered: ${state.otp}')),
+                  );
+                }
+              },
+              listenWhen: (_, state) =>
+                  state is OtpValid || state is OtpInvalid,
+              builder: (context, state) {
+                return ButtonWidget(
+                    onTap: () {
+                      context.read<OtpCubit>().validateOtp();
+                    },
+                    textColor: Colors.white,
+                    text: "تحقق",
+                    buttonColor: const Color(0xff2c1d65));
+              },
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -54,11 +76,10 @@ class OtpPage extends StatelessWidget {
                       return const TextWidget(
                         title: "اعادة ارسال بعد",
                       );
-                    }
-                    else{ 
-                     return const TextWidget(
+                    } else {
+                      return const TextWidget(
                         title: "اعادة الارسال ",
-                      ); 
+                      );
                     }
                   },
                 ),

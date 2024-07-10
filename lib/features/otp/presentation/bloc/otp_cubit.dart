@@ -7,9 +7,16 @@ class OtpCubit extends Cubit<OtpState> {
   OtpCubit() : super(const OtpInitial(60));
   int _duration = 60;
   final String _otp = '1234';
-  void validateOtp(String otp) {
-    if (otp.length == 4 && _otp == otp) {
-      emit(OtpValid(otp));
+  String? _userOtp;
+  void setUserOtp(String? otp) {
+    _userOtp = otp;
+  }
+
+  void validateOtp() {
+    if (_userOtp == null) {
+      emit(const OtpInvalid());
+    } else if (_userOtp!.length == 4 && _userOtp == _otp) {
+      emit(OtpValid(_userOtp!));
     } else {
       emit(const OtpInvalid());
     }
@@ -18,7 +25,6 @@ class OtpCubit extends Cubit<OtpState> {
   Timer? _timer;
   startTimer([int? index]) {
     _duration = 60;
-    // Wakelock.enable();
     if (index != null) {
       emit(const ActivateTimerState(60));
     } else {
@@ -27,7 +33,6 @@ class OtpCubit extends Cubit<OtpState> {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_duration == 0) {
         timer.cancel();
-        // Wakelock.disable();
         emit(const TimeOutState());
       } else {
         _duration--;
