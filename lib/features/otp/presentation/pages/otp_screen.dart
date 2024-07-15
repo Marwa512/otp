@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_cubit.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_states.dart';
+import 'package:opt_page/features/otp/presentation/pages/widgets/change_lang_button.dart';
+import 'package:opt_page/features/otp/presentation/pages/widgets/change_theme_button.dart';
 import 'package:opt_page/features/otp/presentation/pages/widgets/pin_put.dart';
 import 'package:opt_page/shared/presentation/widgets/button_widget.dart';
 import 'package:opt_page/shared/presentation/widgets/text_widget.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'widgets/timer.dart';
 
 class OtpPage extends StatelessWidget {
@@ -16,21 +18,25 @@ class OtpPage extends StatelessWidget {
     return BlocProvider(
       create: (_) => OtpCubit(),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          // backgroundColor: Colors.white,
           elevation: 0,
+          actions: const [
+            ChangeThemeButton(),
+            ChangeLanguageButton(),
+          ],
         ),
         body: Column(
           children: [
             Image.asset("assets/img/logo.png"),
-            const TextWidget(
-              title: "رمز التحقق",
-              color: Color(0xFFb92525),
+            TextWidget(
+              title: tr('verficationCode'),
+              color: const Color(0xFFb92525),
               fontWeight: FontWeight.bold,
             ),
-            const TextWidget(
-              title: "ادخل رمز التحقق المرسل على جوالك ",
+            TextWidget(
+              title: tr("enterVerficationCode"),
               color: Colors.grey,
               fontWeight: FontWeight.bold,
             ),
@@ -60,7 +66,7 @@ class OtpPage extends StatelessWidget {
                       context.read<OtpCubit>().validateOtp();
                     },
                     textColor: Colors.white,
-                    text: "تحقق",
+                    text: tr("verify"),
                     buttonColor: const Color(0xff2c1d65));
               },
             ),
@@ -73,12 +79,12 @@ class OtpPage extends StatelessWidget {
                       current is TimeOutState || current is ActivateTimerState,
                   builder: (context, state) {
                     if (state is ActivateTimerState) {
-                      return const TextWidget(
-                        title: "اعادة ارسال بعد",
+                      return TextWidget(
+                        title: tr("resendAfter"),
                       );
                     } else {
-                      return const TextWidget(
-                        title: "اعادة الارسال ",
+                      return TextWidget(
+                        title: tr("resend"),
                       );
                     }
                   },

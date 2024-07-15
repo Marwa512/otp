@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_cubit.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_states.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 class BuildTimer extends StatelessWidget {
   const BuildTimer({super.key});
 
@@ -20,10 +20,10 @@ class BuildTimer extends StatelessWidget {
               },
               child: Text(
                 state is ActivateTimerState
-                    ? " ثانية  ${state.duration} " 
-                    : "ارسال",
+                    ? "   ${state.duration} ${tr("sec")} " 
+                    : tr("send"),
                 style: const TextStyle(
-                  color: Color(0xfff2c1d65),
+                  color: Color(0xff2c1d65),
                   fontWeight: FontWeight.bold,
                 ),
               ),
