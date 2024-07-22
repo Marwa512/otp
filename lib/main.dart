@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:opt_page/core/service_locator.dart';
+import 'package:opt_page/core/utils/app_route.dart';
 import 'package:opt_page/core/utils/theme_data.dart';
 import 'package:opt_page/features/otp/presentation/pages/otp_screen.dart';
 import 'package:opt_page/shared/presentation/app/app_bloc.dart';
@@ -34,14 +35,15 @@ class OtpScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => AppBloc(),
       child: BlocBuilder<AppBloc, AppState>(builder: (context, state) {
-        return MaterialApp(
+        return MaterialApp.router(
+          routerConfig: AppRoute.router, 
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           debugShowCheckedModeBanner: false,
           theme: context.read<AppBloc>().isDark ? darkTheme : lightTheme,
           title: "OTP screen",
-          home: const OtpPage(),
+          // home: const OtpPage(),
         );
       }),
     );

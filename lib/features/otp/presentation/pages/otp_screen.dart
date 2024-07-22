@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:go_router/go_router.dart';
 import 'package:opt_page/core/service_locator.dart';
+import 'package:opt_page/core/utils/app_route.dart';
 import 'package:opt_page/features/otp/data/repository/otp_repo_imp.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_cubit.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_states.dart';
@@ -51,11 +51,9 @@ class OtpPage extends StatelessWidget {
             BlocConsumer<OtpCubit, OtpState>(
               listener: (context, state) {
                 if (state is VerifyOtpStateSuccess) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                        content:
-                            Text('Valid PIN entered')),
-                  );
+                 context.go(AppRoute.profile,
+                 extra: context.read<OtpCubit>().verifyModel!.data!.profile,
+                 );
                 }
                 if (state is VerifyOtpStateFailed) {
                   ScaffoldMessenger.of(context).showSnackBar(

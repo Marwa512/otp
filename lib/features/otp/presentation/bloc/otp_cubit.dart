@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:opt_page/features/otp/data/models/verify_model.dart';
 import 'package:opt_page/features/otp/data/repository/otp_repo_imp.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_states.dart';
 
@@ -9,13 +10,12 @@ class OtpCubit extends Cubit<OtpState> {
   final OtpRepoImp _otpRepoImp;
   OtpCubit(this._otpRepoImp) : super(const OtpInitial(60));
   int _duration = 60;
-  final String _otp = '1234';
   String? _userOtp;
   void setUserOtp(String? otp) {
     _userOtp = otp;
   }
-
-  void validateOtp({
+ VerifyModel? verifyModel
+;  void validateOtp({
     required String countryCode,
     required String phone,
   }) {
@@ -26,6 +26,7 @@ class OtpCubit extends Cubit<OtpState> {
       phone: phone,
     )
         .then((value) {
+verifyModel =value; 
       emit(const VerifyOtpStateSuccess());
     }).catchError((error) {
       if (error is DioException) {

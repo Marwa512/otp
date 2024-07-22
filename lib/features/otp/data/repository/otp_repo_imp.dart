@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:opt_page/features/otp/data/data_resources/remote/rest_client.dart';
 import 'package:opt_page/features/otp/data/models/verify_model.dart';
@@ -36,7 +35,6 @@ class OtpRepoImp implements OtpRepo {
       verifyModel= response; 
       return verifyModel;
     } catch (e) {
-    //  / print("error = $e.toString()");
       rethrow;
     }
   }
