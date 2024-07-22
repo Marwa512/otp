@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:opt_page/features/otp/data/data_resources/remote/rest_client.dart';
 import 'package:opt_page/features/otp/data/models/verify_model.dart';
-import 'package:opt_page/features/otp/data/repository/otp_repo.dart';
+import 'package:opt_page/features/otp/domain/repository/otp_repo.dart';
 
 class OtpRepoImp implements OtpRepo {
   final RestClient _restClient = GetIt.instance<RestClient>();

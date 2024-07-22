@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:opt_page/core/service_locator.dart';
+import 'package:opt_page/core/function/service_locator.dart';
 import 'package:opt_page/core/utils/app_route.dart';
 import 'package:opt_page/features/otp/data/repository/otp_repo_imp.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_cubit.dart';

@@ -1,4 +1,4 @@
-import 'package:opt_page/core/service_locator.dart';
+import 'package:opt_page/core/function/service_locator.dart';
 import 'package:opt_page/features/otp/data/models/verify_model.dart';
 import 'package:opt_page/features/otp/data/repository/otp_repo_imp.dart';
 import 'package:opt_page/features/otp/presentation/pages/otp_screen.dart';
