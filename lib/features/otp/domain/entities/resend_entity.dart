@@ -1,15 +1,15 @@
-class ResendEntity{
+// class ResendEntity{
 
-  final Data data;
-  final String message; 
-  final bool success; 
-  final Error error;
+//   final Data data;
+//   final String message; 
+//   final bool success; 
+//   final Error error;
 
-  ResendEntity(this.data, this.message, this.success, this.error);
-}
+//   ResendEntity(this.data, this.message, this.success, this.error);
+// }
 
-class Data {
-  final String phone;
+// class Data {
+//   final String phone;
 
-  Data(this.phone);
-}
+//   Data(this.phone);
+// }
