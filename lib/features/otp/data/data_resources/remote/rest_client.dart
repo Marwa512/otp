@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:opt_page/core/utils/endpoints.dart';
 import 'package:opt_page/features/otp/data/models/resend_model.dart';
 import 'package:opt_page/features/otp/data/models/verify_model.dart';
@@ -8,6 +9,7 @@ part "rest_client.g.dart";
 
 @RestApi()
 abstract class RestClient {
+  
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
   @POST(RemoteConfigs.resendOtp)

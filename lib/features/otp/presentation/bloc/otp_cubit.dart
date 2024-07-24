@@ -2,15 +2,10 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
-import 'package:opt_page/core/function/service_locator.dart';
 import 'package:opt_page/features/otp/data/models/verify_model.dart';
 import 'package:opt_page/features/otp/data/repository/otp_repo_imp.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_states.dart';
-import 'package:opt_page/features/profile/data/data_resources/profile_local.dart';
-import 'package:opt_page/features/profile/domain/entities/profile_entity.dart';
 
-import '../../../profile/data/repositpries/profile_repo_imp.dart';
 
 class OtpCubit extends Cubit<OtpState> {
   final OtpRepoImp _otpRepoImp;

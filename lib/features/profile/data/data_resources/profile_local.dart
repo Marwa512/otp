@@ -1,5 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable 
 class ProfileLocalData {
   late SharedPreferences profileData;
   static const String _profile = "PROFILE";

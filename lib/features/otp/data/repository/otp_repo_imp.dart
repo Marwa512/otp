@@ -1,13 +1,16 @@
 import 'package:get_it/get_it.dart';
+import 'package:injectable/injectable.dart';
 import 'package:opt_page/features/otp/data/data_resources/remote/rest_client.dart';
 import 'package:opt_page/features/otp/data/models/verify_model.dart';
 import 'package:opt_page/features/otp/domain/repository/otp_repo.dart';
 import 'package:opt_page/features/profile/data/data_resources/profile_local.dart';
 
+import '../../../../core/function/setup_service_locator.dart';
+
+@injectable
 class OtpRepoImp implements OtpRepo {
   final RestClient _restClient = GetIt.instance<RestClient>();
-  final ProfileLocalData _profileLocalData = GetIt.I<ProfileLocalData>();
-
+  final ProfileLocalData _profileLocalData = getIt<ProfileLocalData>();
   @override
   Future resendOtp({required String countryCode, required String phone}) async {
     try {
@@ -42,7 +45,7 @@ class OtpRepoImp implements OtpRepo {
           email: response.data!.profile?.email ?? "",
           phone: response.data!.profile?.phone ?? "",
           image: response.data!.profile?.image ?? "");
-        
+
       return verifyModel;
     } catch (e) {
       rethrow;

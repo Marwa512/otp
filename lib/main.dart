@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:opt_page/core/function/service_locator.dart';
 import 'package:opt_page/core/utils/app_route.dart';
 import 'package:opt_page/core/utils/theme_data.dart';
-import 'package:opt_page/features/otp/presentation/pages/otp_screen.dart';
 import 'package:opt_page/shared/presentation/app/app_bloc.dart';
+import 'core/function/setup_service_locator.dart';
 import 'core/utils/bloc_observer.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  // GetIt.instance.registerSingleton<SharedPreferencesProvider>(
-  //     SharedPreferencesProvider());
-  setupServiceLocator();
+  
+  configureDependencies();
   Bloc.observer = MyBlocObserver();
   runApp(
     EasyLocalization(
@@ -24,7 +22,6 @@ void main() async {
       child: const OtpScreen(),
     ),
   );
-  // runApp(const OtpScreen());
 }
 
 class OtpScreen extends StatelessWidget {

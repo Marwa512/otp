@@ -1,11 +1,7 @@
-// ignore_for_file: dead_code
 
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:opt_page/core/function/service_locator.dart';
-import 'package:opt_page/features/profile/data/data_resources/profile_local.dart';
-import 'package:opt_page/features/profile/domain/entities/profile_entity.dart';
 import 'package:opt_page/features/profile/presentation/manger/profile/profile_bloc.dart';
 import 'package:opt_page/features/profile/presentation/widgets/profile_widget.dart';
 

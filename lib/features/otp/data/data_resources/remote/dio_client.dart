@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
 Dio buildDioClient(String base) {
   final dio = Dio()

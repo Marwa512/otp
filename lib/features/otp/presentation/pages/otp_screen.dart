@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:opt_page/core/function/service_locator.dart';
+import 'package:opt_page/core/function/setup_service_locator.dart';
 import 'package:opt_page/core/utils/app_route.dart';
 import 'package:opt_page/features/otp/data/repository/otp_repo_imp.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_cubit.dart';
@@ -19,8 +19,10 @@ class OtpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final OtpRepoImp otpRepoImp= getIt<OtpRepoImp>();
+
     return BlocProvider(
-      create: (context) => OtpCubit(getIt.get<OtpRepoImp>()),
+      create: (context) => OtpCubit(otpRepoImp),
       child: Scaffold(
         // backgroundColor: Colors.white,
         appBar: AppBar(
