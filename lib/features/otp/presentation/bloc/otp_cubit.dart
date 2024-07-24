@@ -17,13 +17,9 @@ class OtpCubit extends Cubit<OtpState> {
   OtpCubit(this._otpRepoImp) : super(const OtpInitial(60));
   int _duration = 60;
   String? _userOtp;
-  final ProfileLocalData _profileLocalData = GetIt.I<ProfileLocalData>();
   void setUserOtp(String? otp) {
     _userOtp = otp;
   }
-
-  ProfileEntity? profileData;
-
   VerifyModel? verifyModel;
   void validateOtp({
     required String countryCode,
@@ -37,13 +33,6 @@ class OtpCubit extends Cubit<OtpState> {
     )
         .then((value) {
       verifyModel = value;
-      // _profileLocalData.setProfile(
-      //     name: value.name ?? "",
-      //     date: value.datebirth ?? "",
-      //     email: value.email ?? "",
-      //     phone: value.phone ?? "",
-      //     image: value.image ?? "");
-      // print(_profileLocalData.getProfile());
 
       emit(const VerifyOtpStateSuccess());
     }).catchError((error) {

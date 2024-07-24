@@ -19,44 +19,39 @@ class ProfileScreen extends StatelessWidget {
     ProfileEntity? profileSaved;
     return BlocProvider(
       create: (context) => ProfileBloc()..add(const GetProfileData()),
-      child:
-          BlocConsumer<ProfileBloc, ProfileState>(listener: (context, state) {
-        if (state is GetProfileDataFailed || state is GetProfileDataSuccess) {
-          // getIt.get<ProfileLocalData>().getProfile().then((v) {
-          //   profileSaved = ProfileEntity(
-          //       name: v?[0],
-          //       email: v?[1],
-          //       phone: v?[2],
-          //       datebirth: v?[3],
-          //       image: v?[4]);
-          // });
-        }
-      }, builder: (context, state) {
-        return Scaffold(
-            body: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: ConditionalBuilder(
-                  condition: state is GetProfileDataSuccess ,
-                  builder: (context) {
-                    return ProfileWidget(
-                      datebirth:
-                          context.read<ProfileBloc>().profileData?.datebirth ??
+      child: BlocConsumer<ProfileBloc, ProfileState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return Scaffold(
+                body: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: ConditionalBuilder(
+                      condition: state is GetProfileDataSuccess,
+                      builder: (context) {
+                        return ProfileWidget(
+                          datebirth: context
+                                  .read<ProfileBloc>()
+                                  .profileData
+                                  ?.datebirth ??
                               profileSaved?.datebirth,
-                      email: context.read<ProfileBloc>().profileData?.email ??
-                          profileSaved?.email,
-                      image: context.read<ProfileBloc>().profileData?.image ??
-                          profileSaved?.image,
-                      name: context.read<ProfileBloc>().profileData?.name ??
-                          profileSaved?.name,
-                      phone: context.read<ProfileBloc>().profileData?.phone ??
-                          profileSaved?.phone,
-                    );
-                  },
-                  fallback: (context) => const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                )));
-      }),
+                          email:
+                              context.read<ProfileBloc>().profileData?.email ??
+                                  profileSaved?.email,
+                          image:
+                              context.read<ProfileBloc>().profileData?.image ??
+                                  profileSaved?.image,
+                          name: context.read<ProfileBloc>().profileData?.name ??
+                              profileSaved?.name,
+                          phone:
+                              context.read<ProfileBloc>().profileData?.phone ??
+                                  profileSaved?.phone,
+                        );
+                      },
+                      fallback: (context) => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    )));
+          }),
     );
   }
 }

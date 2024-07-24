@@ -1,4 +1,3 @@
-import 'package:opt_page/features/otp/data/models/verify_model.dart';
 import 'package:opt_page/features/otp/presentation/pages/otp_screen.dart';
 import 'package:opt_page/features/profile/presentation/page/profile_screen.dart';
 import 'package:go_router/go_router.dart';

@@ -13,7 +13,7 @@ part 'profile_bloc.freezed.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   
-
+  final ProfileLocalData _profileLocalData = GetIt.I<ProfileLocalData>();
   ProfileEntity? profileData;
   ProfileBloc() : super(const ProfileState.initial()) {
     
@@ -22,6 +22,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
         getIt.get<ProfileRepoImp>().getProfileData().then((value) {
           profileData = value;
+          
           print("profile $profileData");
           
           emit(const GetProfileDataSuccess());
