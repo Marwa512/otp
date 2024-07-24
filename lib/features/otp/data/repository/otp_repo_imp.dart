@@ -5,7 +5,7 @@ import 'package:opt_page/features/otp/data/models/verify_model.dart';
 import 'package:opt_page/features/otp/domain/repository/otp_repo.dart';
 import 'package:opt_page/features/profile/data/data_resources/profile_local.dart';
 
-import '../../../../core/function/setup_service_locator.dart';
+import '../../../../core/injection/setup_service_locator.dart';
 
 @injectable
 class OtpRepoImp implements OtpRepo {

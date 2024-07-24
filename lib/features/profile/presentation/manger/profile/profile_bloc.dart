@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:opt_page/core/function/setup_service_locator.dart';
+import 'package:opt_page/core/injection/setup_service_locator.dart';
 import 'package:opt_page/features/profile/domain/entities/profile_entity.dart';
 import '../../../data/repositpries/profile_repo_imp.dart';
 

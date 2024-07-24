@@ -11,7 +11,7 @@
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
-import 'package:opt_page/core/function/register_module.dart' as _i543;
+import 'package:opt_page/core/injection/register_module.dart' as _i649;
 import 'package:opt_page/features/otp/data/data_resources/remote/rest_client.dart'
     as _i0;
 import 'package:opt_page/features/otp/data/repository/otp_repo_imp.dart'
@@ -43,4 +43,4 @@ extension GetItInjectableX on _i174.GetIt {
   }
 }
 
-class _$RegisterModule extends _i543.RegisterModule {}
+class _$RegisterModule extends _i649.RegisterModule {}

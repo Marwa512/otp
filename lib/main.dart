@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:opt_page/core/utils/app_route.dart';
 import 'package:opt_page/core/utils/theme_data.dart';
 import 'package:opt_page/shared/presentation/app/app_bloc.dart';
-import 'core/function/setup_service_locator.dart';
+import 'core/injection/setup_service_locator.dart';
 import 'core/utils/bloc_observer.dart';
 import 'package:easy_localization/easy_localization.dart';
 
