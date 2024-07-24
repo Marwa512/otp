@@ -16,7 +16,6 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProfileEntity? profileSaved;
     return BlocProvider(
       create: (context) => ProfileBloc()..add(const GetProfileData()),
       child: BlocConsumer<ProfileBloc, ProfileState>(
@@ -30,21 +29,13 @@ class ProfileScreen extends StatelessWidget {
                       builder: (context) {
                         return ProfileWidget(
                           datebirth: context
-                                  .read<ProfileBloc>()
-                                  .profileData
-                                  ?.datebirth ??
-                              profileSaved?.datebirth,
-                          email:
-                              context.read<ProfileBloc>().profileData?.email ??
-                                  profileSaved?.email,
-                          image:
-                              context.read<ProfileBloc>().profileData?.image ??
-                                  profileSaved?.image,
-                          name: context.read<ProfileBloc>().profileData?.name ??
-                              profileSaved?.name,
-                          phone:
-                              context.read<ProfileBloc>().profileData?.phone ??
-                                  profileSaved?.phone,
+                              .read<ProfileBloc>()
+                              .profileData
+                              ?.datebirth,
+                          email: context.read<ProfileBloc>().profileData?.email,
+                          image: context.read<ProfileBloc>().profileData?.image,
+                          name: context.read<ProfileBloc>().profileData?.name,
+                          phone: context.read<ProfileBloc>().profileData?.phone,
                         );
                       },
                       fallback: (context) => const Center(
