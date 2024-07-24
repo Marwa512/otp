@@ -2,20 +2,30 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:opt_page/core/function/service_locator.dart';
 import 'package:opt_page/features/otp/data/models/verify_model.dart';
 import 'package:opt_page/features/otp/data/repository/otp_repo_imp.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_states.dart';
+import 'package:opt_page/features/profile/data/data_resources/profile_local.dart';
+import 'package:opt_page/features/profile/domain/entities/profile_entity.dart';
+
+import '../../../profile/data/repositpries/profile_repo_imp.dart';
 
 class OtpCubit extends Cubit<OtpState> {
   final OtpRepoImp _otpRepoImp;
   OtpCubit(this._otpRepoImp) : super(const OtpInitial(60));
   int _duration = 60;
   String? _userOtp;
+  final ProfileLocalData _profileLocalData = GetIt.I<ProfileLocalData>();
   void setUserOtp(String? otp) {
     _userOtp = otp;
   }
- VerifyModel? verifyModel
-;  void validateOtp({
+
+  ProfileEntity? profileData;
+
+  VerifyModel? verifyModel;
+  void validateOtp({
     required String countryCode,
     required String phone,
   }) {
@@ -26,7 +36,15 @@ class OtpCubit extends Cubit<OtpState> {
       phone: phone,
     )
         .then((value) {
-verifyModel =value; 
+      verifyModel = value;
+      // _profileLocalData.setProfile(
+      //     name: value.name ?? "",
+      //     date: value.datebirth ?? "",
+      //     email: value.email ?? "",
+      //     phone: value.phone ?? "",
+      //     image: value.image ?? "");
+      // print(_profileLocalData.getProfile());
+
       emit(const VerifyOtpStateSuccess());
     }).catchError((error) {
       if (error is DioException) {

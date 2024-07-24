@@ -1,42 +1,62 @@
+// ignore_for_file: dead_code
+
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
-import 'package:opt_page/features/otp/data/models/verify_model.dart';
-import 'package:opt_page/features/profile/presentation/widgets/sized_box.dart';
-import 'package:opt_page/features/profile/presentation/widgets/text_form.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:opt_page/core/function/service_locator.dart';
+import 'package:opt_page/features/profile/data/data_resources/profile_local.dart';
+import 'package:opt_page/features/profile/domain/entities/profile_entity.dart';
+import 'package:opt_page/features/profile/presentation/manger/profile/profile_bloc.dart';
+import 'package:opt_page/features/profile/presentation/widgets/profile_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({
-    super.key,  required this.profile,
+    super.key,
   });
- final Profile profile;
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-        body: Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-           SizedBox(
-            height: 100,
-            width: 100,
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(profile.image ?? ""),
-            ),
-          ),
-          const SizedBoxWidget(),
-          const SizedBoxWidget(),
-          TextFormWidget(label: profile.name, iconData: Icons.person),
-          const SizedBoxWidget(),
-          TextFormWidget(label: profile.email, iconData: Icons.email),
-          const SizedBoxWidget(),
-          TextFormWidget(label: profile.phone, iconData: Icons.phone),
-          const SizedBoxWidget(),
-           TextFormWidget(label: profile.birthdate, iconData: Icons.date_range),
-          const SizedBoxWidget(),
-        ],
-      ),
-    ));
+    ProfileEntity? profileSaved;
+    return BlocProvider(
+      create: (context) => ProfileBloc()..add(const GetProfileData()),
+      child:
+          BlocConsumer<ProfileBloc, ProfileState>(listener: (context, state) {
+        if (state is GetProfileDataFailed || state is GetProfileDataSuccess) {
+          // getIt.get<ProfileLocalData>().getProfile().then((v) {
+          //   profileSaved = ProfileEntity(
+          //       name: v?[0],
+          //       email: v?[1],
+          //       phone: v?[2],
+          //       datebirth: v?[3],
+          //       image: v?[4]);
+          // });
+        }
+      }, builder: (context, state) {
+        return Scaffold(
+            body: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: ConditionalBuilder(
+                  condition: state is GetProfileDataSuccess ,
+                  builder: (context) {
+                    return ProfileWidget(
+                      datebirth:
+                          context.read<ProfileBloc>().profileData?.datebirth ??
+                              profileSaved?.datebirth,
+                      email: context.read<ProfileBloc>().profileData?.email ??
+                          profileSaved?.email,
+                      image: context.read<ProfileBloc>().profileData?.image ??
+                          profileSaved?.image,
+                      name: context.read<ProfileBloc>().profileData?.name ??
+                          profileSaved?.name,
+                      phone: context.read<ProfileBloc>().profileData?.phone ??
+                          profileSaved?.phone,
+                    );
+                  },
+                  fallback: (context) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                )));
+      }),
+    );
   }
 }
