@@ -7,8 +7,9 @@ import 'package:opt_page/features/otp/data/data_resources/remote/rest_client.dar
 @module
 abstract class RegisterModule {
   @lazySingleton
-  Dio buildDio() => buildDioClient(RemoteConfigs.baseUrl);
+  Dio get buildDio => buildDioClient(RemoteConfigs.baseUrl);
 
   @lazySingleton
-  RestClient restClient()=> RestClient(buildDio());
+  RestClient get restClient => RestClient(buildDio);
+ 
 }

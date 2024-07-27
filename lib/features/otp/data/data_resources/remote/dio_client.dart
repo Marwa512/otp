@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
+import 'package:flutter/foundation.dart';
 
 Dio buildDioClient(String base) {
   final dio = Dio()
@@ -12,17 +12,27 @@ Dio buildDioClient(String base) {
   dio.interceptors.add(
     InterceptorsWrapper(
       onRequest: (options, handler) {
-        print("Request: ${options.method} ${options.uri}");
-        print("Headers: ${options.headers}");
-        print("Data: ${options.data}");
+        if (kDebugMode) {
+          print("Request: ${options.method} ${options.uri}");
+        }
+        if (kDebugMode) {
+          print("Headers: ${options.headers}");
+        }
+        if (kDebugMode) {
+          print("Data: ${options.data}");
+        }
         return handler.next(options); 
       },
       onResponse: (response, handler) {
-        print("Response: ${response.statusCode} ${response.data}");
+        if (kDebugMode) {
+          print("Response: ${response.statusCode} ${response.data}");
+        }
         return handler.next(response); 
       },
-      onError: (DioError e, handler) {
-        print("Error: ${e.response?.statusCode} ${e.response?.data}");
+      onError: (DioException e, handler) {
+        if (kDebugMode) {
+          print("Error: ${e.response?.statusCode} ${e.response?.data}");
+        }
         return handler.next(e); 
       },
     ),

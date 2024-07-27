@@ -1,16 +1,15 @@
-import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:opt_page/features/otp/data/models/verify_model.dart';
 import 'package:opt_page/features/otp/data/repository/otp_repo_imp.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_states.dart';
 
-
+@injectable
 class OtpCubit extends Cubit<OtpState> {
   final OtpRepoImp _otpRepoImp;
-  OtpCubit(this._otpRepoImp) : super(const OtpInitial(60));
-  int _duration = 60;
+  OtpCubit(@factoryParam this._otpRepoImp) : super(const OtpInitial(60));
   String? _userOtp;
   void setUserOtp(String? otp) {
     _userOtp = otp;
@@ -39,18 +38,7 @@ class OtpCubit extends Cubit<OtpState> {
     });
   }
 
-  Timer? _timer;
   void startTimer() {
-    _duration = 60;
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (_duration == 0) {
-        timer.cancel();
-        emit(const TimeOutState());
-      } else {
-        _duration--;
-        emit(ActivateTimerState(_duration));
-      }
-    });
   }
 
   void resendOtp({

@@ -109,12 +109,18 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
+class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   const _$InitialImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AppState.initial'));
   }
 
   @override
@@ -244,15 +250,25 @@ class __$$ChangeLanguageImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeLanguageImpl implements ChangeLanguage {
+class _$ChangeLanguageImpl
+    with DiagnosticableTreeMixin
+    implements ChangeLanguage {
   const _$ChangeLanguageImpl(this.locale);
 
   @override
   final Locale locale;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppState.changeLanguage(locale: $locale)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppState.changeLanguage'))
+      ..add(DiagnosticsProperty('locale', locale));
   }
 
   @override
@@ -381,12 +397,20 @@ class __$$ChangeThemeStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeThemeStateImpl implements ChangeThemeState {
+class _$ChangeThemeStateImpl
+    with DiagnosticableTreeMixin
+    implements ChangeThemeState {
   const _$ChangeThemeStateImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppState.changeThemeState()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AppState.changeThemeState'));
   }
 
   @override
@@ -501,12 +525,20 @@ class __$$LightThemeStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LightThemeStateImpl implements LightThemeState {
+class _$LightThemeStateImpl
+    with DiagnosticableTreeMixin
+    implements LightThemeState {
   const _$LightThemeStateImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppState.lightThemeState()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AppState.lightThemeState'));
   }
 
   @override
@@ -621,12 +653,20 @@ class __$$DarkThemeStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DarkThemeStateImpl implements DarkThemeState {
+class _$DarkThemeStateImpl
+    with DiagnosticableTreeMixin
+    implements DarkThemeState {
   const _$DarkThemeStateImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppState.darkThemeState()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AppState.darkThemeState'));
   }
 
   @override
@@ -815,15 +855,23 @@ class __$$ChangeLocaleImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeLocaleImpl implements _ChangeLocale {
+class _$ChangeLocaleImpl with DiagnosticableTreeMixin implements _ChangeLocale {
   const _$ChangeLocaleImpl(this.locale);
 
   @override
   final Locale locale;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppEvent.changeLocale(locale: $locale)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppEvent.changeLocale'))
+      ..add(DiagnosticsProperty('locale', locale));
   }
 
   @override
@@ -933,12 +981,20 @@ class __$$ChangeThemeDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeThemeDataImpl implements _ChangeThemeData {
+class _$ChangeThemeDataImpl
+    with DiagnosticableTreeMixin
+    implements _ChangeThemeData {
   const _$ChangeThemeDataImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppEvent.changeThemeData()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AppEvent.changeThemeData'));
   }
 
   @override

@@ -24,9 +24,7 @@ class OtpPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => OtpCubit(otpRepoImp),
       child: Scaffold(
-        // backgroundColor: Colors.white,
         appBar: AppBar(
-          // backgroundColor: Colors.white,
           elevation: 0,
           actions: const [
             ChangeThemeButton(),
@@ -67,6 +65,7 @@ class OtpPage extends StatelessWidget {
               builder: (context, state) {
                 return ButtonWidget(
                     onTap: () {
+                    
                       context
                           .read<OtpCubit>()
                           .validateOtp(countryCode: '+966', phone: '511111111');

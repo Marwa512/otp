@@ -1,3 +1,6 @@
+import 'package:injectable/injectable.dart';
+
+@module
 abstract class OtpRepo {
   Future<dynamic> verifyOtp({
     required String countryCode,
