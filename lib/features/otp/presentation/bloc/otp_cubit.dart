@@ -45,11 +45,6 @@ class OtpCubit extends Cubit<OtpState> {
   Timer? _timer;
   startTimer([int? index]) {
     _duration = 60;
-    if (index != null) {
-      emit(const ActivateTimerState(60));
-    } else {
-      emit(const ActivateTimerState(60));
-    }
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_duration == 0) {
         timer.cancel();

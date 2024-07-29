@@ -4,7 +4,7 @@ import 'package:opt_page/core/utils/endpoints.dart';
 import 'package:opt_page/features/otp/data/data_resources/remote/dio_client.dart';
 import 'package:opt_page/features/otp/data/data_resources/remote/rest_client.dart';
 
-import '../../features/otp/data/data_resources/local/shared_prefrences.dart';
+import '../../shared/data/data_resources/local_data.dart';
 
 @module
 abstract class RegisterModule {

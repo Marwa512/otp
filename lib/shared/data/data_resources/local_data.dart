@@ -1,7 +1,5 @@
-import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-@injectable
 class SharedPreferencesProvider {
   late SharedPreferences prefs;
   static const String _language = "LANG";
