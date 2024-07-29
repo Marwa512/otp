@@ -4,7 +4,7 @@ import 'package:opt_page/features/profile/domain/entities/profile_entity.dart';
 import 'package:opt_page/features/profile/domain/repositories/profile_repo.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable(as: ProfileRepo)
+@injectable
 class ProfileRepoImp implements ProfileRepo {
   final OtpRepoImp _otpRepoImp;
   final ProfileLocalData _profileLocalData;

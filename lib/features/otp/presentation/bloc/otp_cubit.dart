@@ -1,3 +1,4 @@
+import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,11 +10,14 @@ import 'package:opt_page/features/otp/presentation/bloc/otp_states.dart';
 @injectable
 class OtpCubit extends Cubit<OtpState> {
   final OtpRepoImp _otpRepoImp;
-  OtpCubit(@factoryParam this._otpRepoImp) : super(const OtpInitial(60));
+  OtpCubit(this._otpRepoImp) : super(const OtpInitial(60));
   String? _userOtp;
+  int _duration = 60;
+
   void setUserOtp(String? otp) {
     _userOtp = otp;
   }
+
   VerifyModel? verifyModel;
   void validateOtp({
     required String countryCode,
@@ -38,7 +42,23 @@ class OtpCubit extends Cubit<OtpState> {
     });
   }
 
-  void startTimer() {
+  Timer? _timer;
+  startTimer([int? index]) {
+    _duration = 60;
+    if (index != null) {
+      emit(const ActivateTimerState(60));
+    } else {
+      emit(const ActivateTimerState(60));
+    }
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_duration == 0) {
+        timer.cancel();
+        emit(const TimeOutState());
+      } else {
+        _duration--;
+        emit(ActivateTimerState(_duration));
+      }
+    });
   }
 
   void resendOtp({
