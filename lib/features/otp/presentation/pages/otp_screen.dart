@@ -19,10 +19,11 @@ class OtpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final OtpRepoImp otpRepoImp= getIt<OtpRepoImp>();
+    final OtpRepoImp otpRepoImp = getIt<OtpRepoImp>();
 
     return BlocProvider(
-      create: (context) => OtpCubit(otpRepoImp),
+      create: (context) => OtpCubit(otpRepoImp)
+        ..resendOtp(countryCode: "+966", phone: "511111111"),
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -51,21 +52,20 @@ class OtpPage extends StatelessWidget {
             BlocConsumer<OtpCubit, OtpState>(
               listener: (context, state) {
                 if (state is VerifyOtpStateSuccess) {
-                 context.go(AppRoute.profile,
-                 extra: context.read<OtpCubit>().verifyModel!.data!.profile,
-                 );
+                  context.go(
+                    AppRoute.profile,
+                    extra: context.read<OtpCubit>().verifyModel!.data!.profile,
+                  );
                 }
                 if (state is VerifyOtpStateFailed) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                        content: Text(' ${state.message}')),
+                    SnackBar(content: Text(' ${state.message}')),
                   );
                 }
               },
               builder: (context, state) {
                 return ButtonWidget(
                     onTap: () {
-                    
                       context
                           .read<OtpCubit>()
                           .validateOtp(countryCode: '+966', phone: '511111111');

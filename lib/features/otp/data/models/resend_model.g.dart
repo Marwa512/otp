@@ -31,7 +31,8 @@ Map<String, dynamic> _$$DataImplToJson(_$DataImpl instance) =>
       'phone': instance.phone,
     };
 
-_$ErrorsImpl _$$ErrorsImplFromJson(Map<String, dynamic> json) => _$ErrorsImpl();
+_$ErrorsImpl _$$ErrorsImplFromJson(Map<String, dynamic> json) =>
+    const _$ErrorsImpl();
 
 Map<String, dynamic> _$$ErrorsImplToJson(_$ErrorsImpl instance) =>
     <String, dynamic>{};

@@ -1,14 +1,14 @@
+import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:opt_page/features/otp/data/data_resources/remote/rest_client.dart';
 import 'package:opt_page/features/otp/data/models/verify_model.dart';
 import 'package:opt_page/features/otp/domain/repository/otp_repo.dart';
 import 'package:opt_page/features/profile/data/data_resources/profile_local.dart';
 
-
 @Injectable()
 class OtpRepoImp implements OtpRepo {
-  final RestClient _restClient ;
-  final ProfileLocalData _profileLocalData ;
+  final RestClient _restClient;
+  final ProfileLocalData _profileLocalData;
 
   OtpRepoImp(this._restClient, this._profileLocalData);
   @override
@@ -48,7 +48,13 @@ class OtpRepoImp implements OtpRepo {
 
       return verifyModel;
     } catch (e) {
-      rethrow;
+      if (e is DioException) {
+        final errorResponse = e.response?.data;
+        final message = errorResponse?['message'] ?? 'Unknown error';
+        return message;
+      } else {
+        rethrow;
+      }
     }
   }
 }

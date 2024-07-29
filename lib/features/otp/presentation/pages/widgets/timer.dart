@@ -26,7 +26,6 @@ class BuildTimer extends StatelessWidget {
                 context
                     .read<OtpCubit>()
                     .resendOtp(countryCode: '+966', phone: '511111111');
-                context.read<OtpCubit>().startTimer();
               },
               child: Text(
                 state is ActivateTimerState

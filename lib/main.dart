@@ -12,7 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
-  configureDependencies();
+  await configureDependencies();
   Bloc.observer = MyBlocObserver();
   runApp(
     EasyLocalization(

@@ -34,11 +34,7 @@ class OtpCubit extends Cubit<OtpState> {
 
       emit(const VerifyOtpStateSuccess());
     }).catchError((error) {
-      if (error is DioException) {
-        final errorResponse = error.response?.data;
-        final message = errorResponse?['message'] ?? 'Unknown error';
-        emit(VerifyOtpStateFailed(message));
-      }
+      emit(VerifyOtpStateFailed(error));
     });
   }
 
@@ -62,6 +58,7 @@ class OtpCubit extends Cubit<OtpState> {
   }) {
     _otpRepoImp.resendOtp(countryCode: countryCode, phone: phone).then((value) {
       emit(ResendOtpStateSuccess(value));
+      startTimer();
     }).catchError((e) {
       emit(const ResendOtpStateFailed());
     });
