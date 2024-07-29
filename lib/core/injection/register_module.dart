@@ -4,12 +4,16 @@ import 'package:opt_page/core/utils/endpoints.dart';
 import 'package:opt_page/features/otp/data/data_resources/remote/dio_client.dart';
 import 'package:opt_page/features/otp/data/data_resources/remote/rest_client.dart';
 
+import '../../features/otp/data/data_resources/local/shared_prefrences.dart';
+
 @module
 abstract class RegisterModule {
-  @lazySingleton
+  @Singleton()
   Dio get buildDio => buildDioClient(RemoteConfigs.baseUrl);
 
-  @lazySingleton
+  @Singleton()
   RestClient get restClient => RestClient(buildDio);
- 
+
+  @Singleton()
+  SharedPreferencesProvider get sharedPref => SharedPreferencesProvider();
 }

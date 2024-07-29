@@ -1,4 +1,3 @@
-
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +14,8 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProfileBloc(getIt<ProfileRepoImp>())..add(const GetProfileData()),
+      create: (context) =>
+          ProfileBloc(getIt<ProfileRepoImp>())..add(const GetProfileData()),
       child: BlocConsumer<ProfileBloc, ProfileState>(
           listener: (context, state) {},
           builder: (context, state) {
