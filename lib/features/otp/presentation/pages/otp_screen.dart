@@ -22,8 +22,7 @@ class OtpPage extends StatelessWidget {
     final OtpRepoImp otpRepoImp = getIt<OtpRepoImp>();
 
     return BlocProvider(
-      create: (context) => OtpCubit(otpRepoImp)
-        ..resendOtp(countryCode: "+966", phone: "511111111"),
+      create: (context) => OtpCubit(otpRepoImp),
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
