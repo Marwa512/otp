@@ -1,5 +1,3 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:opt_page/core/utils/app_route.dart';
@@ -23,13 +21,10 @@ void main() async {
     messagingSenderId: '131368456534',
     projectId: "otpfcm-4eef9",
   ));
-  var token = await FirebaseMessaging.instance.getToken();
+  await notificaionConfig();
   await EasyLocalization.ensureInitialized();
-  if (kDebugMode) {
-    print("Token $token");
-  }
+
   await configureDependencies();
-  notification();
   Bloc.observer = MyBlocObserver();
   runApp(
     EasyLocalization(
