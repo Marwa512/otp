@@ -1,3 +1,4 @@
+import 'package:opt_page/features/otp/notification/domain/entities/notification_entity.dart';
 import 'package:opt_page/features/otp/notification/presentation/pages/notification_details.dart';
 import 'package:opt_page/features/otp/presentation/pages/otp_screen.dart';
 import 'package:opt_page/features/profile/presentation/page/profile_screen.dart';
@@ -19,7 +20,9 @@ abstract class AppRoute {
       ),
       GoRoute(
         path: notification,
-        builder: (context, state) => const NotificationDetails(),
+        builder: (context, state) => NotificationDetails(
+          notificationEntity: state.extra as NotificationEntity,
+        ),
       ),
     ],
   );

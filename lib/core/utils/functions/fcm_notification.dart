@@ -1,11 +1,14 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:opt_page/core/injection/setup_service_locator.dart';
+import 'package:opt_page/core/utils/app_route.dart';
+import 'package:opt_page/features/otp/notification/data/repositories/notification_repo_imp.dart';
+import 'package:opt_page/features/otp/notification/domain/entities/notification_entity.dart';
 
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 Future<void> notificaionConfig() async {
-  // FlutterLocalNotificationsPlugin();
   const AndroidInitializationSettings initializationSettingsAndroid =
       AndroidInitializationSettings('@mipmap/ic_launcher');
   const InitializationSettings initializationSettings =
@@ -62,12 +65,18 @@ Future<void> notificaionConfig() async {
     }
   });
 
-  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-// navigate to new page
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
+    NotificationEntity notificationEntity = NotificationEntity(
+      message: message.notification!.body,
+      title: message.notification!.title,
+    );
 
     if (kDebugMode) {
-      print("On Message Opened app: ${message.data}");
+      print("Message clicked");
+      print(
+          "On Message Opened app: ${message.notification?.body}   ${message.notification?.title}");
     }
+    AppRoute.router.go(AppRoute.notification, extra: notificationEntity);
   });
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
