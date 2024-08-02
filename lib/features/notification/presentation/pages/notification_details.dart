@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:opt_page/features/otp/notification/domain/entities/notification_entity.dart';
+import 'package:opt_page/features/notification/domain/entities/notification_entity.dart';
 
+@RoutePage()
 class NotificationDetails extends StatelessWidget {
   const NotificationDetails({
     super.key,

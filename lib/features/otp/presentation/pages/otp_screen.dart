@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opt_page/core/injection/setup_service_locator.dart';
 import 'package:opt_page/core/utils/app_route.dart';
+import 'package:opt_page/core/utils/auto_app_router.dart';
 import 'package:opt_page/features/otp/data/repository/otp_repo_imp.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_cubit.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_states.dart';
@@ -14,8 +16,11 @@ import 'package:opt_page/shared/presentation/widgets/text_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'widgets/timer.dart';
 
+@RoutePage()
 class OtpPage extends StatelessWidget {
-  const OtpPage({super.key});
+  const OtpPage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +56,7 @@ class OtpPage extends StatelessWidget {
             BlocConsumer<OtpCubit, OtpState>(
               listener: (context, state) {
                 if (state is VerifyOtpStateSuccess) {
-                  context.go(
-                    AppRoute.profile,
-                    extra: context.read<OtpCubit>().verifyModel!.data!.profile,
-                  );
+                  context.router.push(const ProfileRoute());
                 }
                 if (state is VerifyOtpStateFailed) {
                   ScaffoldMessenger.of(context).showSnackBar(

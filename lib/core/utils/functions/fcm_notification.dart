@@ -1,10 +1,8 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:opt_page/core/injection/setup_service_locator.dart';
 import 'package:opt_page/core/utils/app_route.dart';
-import 'package:opt_page/features/otp/notification/data/repositories/notification_repo_imp.dart';
-import 'package:opt_page/features/otp/notification/domain/entities/notification_entity.dart';
+import 'package:opt_page/features/notification/domain/entities/notification_entity.dart';
 
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();

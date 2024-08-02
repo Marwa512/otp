@@ -1,4 +1,4 @@
-import 'package:opt_page/features/otp/notification/domain/entities/notification_entity.dart';
+import 'package:opt_page/features/notification/domain/entities/notification_entity.dart';
 
 import '../../domain/repositories/notification_repo.dart';
 
