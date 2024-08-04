@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:opt_page/core/utils/app_route.dart';
 import 'package:opt_page/core/utils/auto_app_router.dart';
 import 'package:opt_page/core/utils/theme_data.dart';
 import 'package:opt_page/shared/data/data_resources/local_data.dart';

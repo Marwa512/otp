@@ -1,15 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:opt_page/core/injection/setup_service_locator.dart';
-import 'package:opt_page/core/utils/app_route.dart';
 import 'package:opt_page/core/utils/auto_app_router.dart';
 import 'package:opt_page/features/otp/data/repository/otp_repo_imp.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_cubit.dart';
 import 'package:opt_page/features/otp/presentation/bloc/otp_states.dart';
 import 'package:opt_page/features/otp/presentation/pages/widgets/change_lang_button.dart';
 import 'package:opt_page/features/otp/presentation/pages/widgets/change_theme_button.dart';
+import 'package:opt_page/features/otp/presentation/pages/widgets/map_button.dart';
 import 'package:opt_page/features/otp/presentation/pages/widgets/pin_put.dart';
 import 'package:opt_page/shared/presentation/widgets/button_widget.dart';
 import 'package:opt_page/shared/presentation/widgets/text_widget.dart';
@@ -34,6 +33,7 @@ class OtpPage extends StatelessWidget {
           actions: const [
             ChangeThemeButton(),
             ChangeLanguageButton(),
+            MapButton(),
           ],
         ),
         body: Column(
