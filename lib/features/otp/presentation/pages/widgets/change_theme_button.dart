@@ -12,7 +12,7 @@ class ChangeThemeButton extends StatelessWidget {
         onPressed: () {
           context.read<AppBloc>().add(const AppEvent.changeThemeData());
         },
-        icon: context.read<AppBloc>().isDark  
+        icon: context.read<AppBloc>().isDark
             ? const Icon(Icons.light_mode)
             : const Icon(Icons.dark_mode),
       );

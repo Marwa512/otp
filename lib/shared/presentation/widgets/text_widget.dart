@@ -17,11 +17,12 @@ class TextWidget extends StatelessWidget {
     return Text(
       title,
       maxLines: 1,
-      style:
-          TextStyle(color: color, fontSize: fontSize, fontWeight: fontWeight,
+      style: TextStyle(
+          color: color,
+          fontSize: fontSize,
+          fontWeight: fontWeight,
           fontFamily: "Poppin",
-          overflow: TextOverflow.ellipsis
-          ),
+          overflow: TextOverflow.ellipsis),
     );
   }
 }

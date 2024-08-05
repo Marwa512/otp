@@ -31,6 +31,7 @@ class TimeOutState extends OtpState {
   @override
   List<Object?> get props => [];
 }
+
 class OtpValid extends OtpState {
   final String otp;
 
@@ -39,37 +40,34 @@ class OtpValid extends OtpState {
   @override
   List<Object?> get props => [otp];
 }
+
 class OtpInvalid extends OtpState {
   const OtpInvalid();
 }
 
-
-class ResendOtpStateSuccess extends OtpState{
+class ResendOtpStateSuccess extends OtpState {
   const ResendOtpStateSuccess(this.message);
-  final String message; 
+  final String message;
   @override
   List<Object?> get props => [message];
 }
-class ResendOtpStateFailed extends OtpState{
+
+class ResendOtpStateFailed extends OtpState {
   const ResendOtpStateFailed();
   @override
   List<Object?> get props => [];
 }
 
-class VerifyOtpStateSuccess extends OtpState{
-
+class VerifyOtpStateSuccess extends OtpState {
   const VerifyOtpStateSuccess();
   // final String verifyModel;
-    @override
+  @override
   List<Object?> get props => [];
-
-
 }
-class VerifyOtpStateFailed extends OtpState{
 
+class VerifyOtpStateFailed extends OtpState {
   const VerifyOtpStateFailed(this.message);
-  final String message; 
+  final String message;
   @override
   List<Object?> get props => [message];
-
 }

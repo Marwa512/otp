@@ -8,7 +8,6 @@ part "rest_client.g.dart";
 
 @RestApi()
 abstract class RestClient {
-  
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
   @POST(RemoteConfigs.resendOtp)

@@ -1,6 +1,5 @@
-
-abstract class UseCase <Type, param> { 
-Future <Type> execute ([param param]);
-
+abstract class UseCase<Type, param> {
+  Future<Type> execute([param param]);
 }
-class NoParam{}
+
+class NoParam {}

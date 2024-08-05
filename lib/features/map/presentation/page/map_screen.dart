@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:opt_page/features/map/presentation/page/widgets/custom_text_field.dart';
 
 import '../../../../core/utils/functions/location_serv.dart';
 
@@ -34,12 +36,9 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(
+      resizeToAvoidBottomInset: false,
+      body: Stack(
         children: [
-          const SizedBox(
-            height: 10,
-          ),
           GoogleMap(
               zoomControlsEnabled: false,
               onMapCreated: (controller) {
@@ -47,6 +46,12 @@ class _MapScreenState extends State<MapScreen> {
               },
               markers: markers,
               initialCameraPosition: initialCameraPostion),
+          Positioned(
+            top: 50,
+            right: 16,
+            left: 16,
+            child: CustomTextField(),
+          ),
         ],
       ),
     );

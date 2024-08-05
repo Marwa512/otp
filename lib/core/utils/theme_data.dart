@@ -15,8 +15,7 @@ final appThemeData = {
   AppTheme.darkTheme: ThemeData.dark(),
 };
 
-ThemeData darkTheme =ThemeData.dark();
-ThemeData lightTheme= ThemeData.light().copyWith(
-                scaffoldBackgroundColor: Colors.white,
-                appBarTheme:const AppBarTheme(backgroundColor: Colors.white)
-              );
+ThemeData darkTheme = ThemeData.dark();
+ThemeData lightTheme = ThemeData.light().copyWith(
+    scaffoldBackgroundColor: Colors.white,
+    appBarTheme: const AppBarTheme(backgroundColor: Colors.white));

@@ -5,28 +5,29 @@ part 'resend_model.g.dart';
 
 @freezed
 class ResendModel with _$ResendModel {
-    const factory ResendModel({
-        required Data data,
-        required Errors errors,
-        required String message,
-        required bool success,
-    }) = _ResendModel;
+  const factory ResendModel({
+    required Data data,
+    required Errors errors,
+    required String message,
+    required bool success,
+  }) = _ResendModel;
 
-    factory ResendModel.fromJson(Map<String, dynamic> json) => _$ResendModelFromJson(json);
+  factory ResendModel.fromJson(Map<String, dynamic> json) =>
+      _$ResendModelFromJson(json);
 }
 
 @freezed
 class Data with _$Data {
-    const factory Data({
-        required String phone,
-    }) = _Data;
+  const factory Data({
+    required String phone,
+  }) = _Data;
 
-    factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
+  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 }
 
 @freezed
 class Errors with _$Errors {
-    const factory Errors() = _Errors;
+  const factory Errors() = _Errors;
 
-    factory Errors.fromJson(Map<String, dynamic> json) => _$ErrorsFromJson(json);
+  factory Errors.fromJson(Map<String, dynamic> json) => _$ErrorsFromJson(json);
 }

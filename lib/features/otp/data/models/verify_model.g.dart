@@ -160,8 +160,7 @@ Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) =>
       'personaVerifyLink': instance.personaVerifyLink,
     };
 
-_$ErrorsImpl _$$ErrorsImplFromJson(Map<String, dynamic> json) =>
-    const _$ErrorsImpl();
+_$ErrorsImpl _$$ErrorsImplFromJson(Map<String, dynamic> json) => _$ErrorsImpl();
 
 Map<String, dynamic> _$$ErrorsImplToJson(_$ErrorsImpl instance) =>
     <String, dynamic>{};

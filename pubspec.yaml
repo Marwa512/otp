@@ -51,6 +51,8 @@ dependencies:
   auto_route: ^7.0.0
   google_maps_flutter: ^2.2.8
   location: ^6.0.2
+  flutter_google_places: ^0.3.0
+  http: ^0.13.6
 
 
 dev_dependencies:
