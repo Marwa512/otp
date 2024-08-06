@@ -3,12 +3,14 @@ import 'package:flutter/foundation.dart';
 
 Dio buildDioClient(String base) {
   final dio = Dio()
-    ..options =
-        BaseOptions(baseUrl: base, contentType: "application/json", headers: {
-      'Content-Type': 'application/json',
-      'X-SECRET-KEY': "GOLDEN-5mm0jUsfOwCrAANQ6X_uoJkexlL",
-      "X-Language": "ar"
-    });
+    ..options = BaseOptions(
+      baseUrl: base, contentType: "application/json",
+      //  headers: {
+      //   'Content-Type': 'application/json',
+      //   'X-SECRET-KEY': "GOLDEN-5mm0jUsfOwCrAANQ6X_uoJkexlL",
+      //   "X-Language": "ar"
+      // }
+    );
   dio.interceptors.add(
     InterceptorsWrapper(
       onRequest: (options, handler) {

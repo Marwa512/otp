@@ -53,6 +53,9 @@ dependencies:
   location: ^6.0.2
   flutter_google_places: ^0.3.0
   http: ^0.13.6
+  uuid: ^4.4.2
+  flutter_map_marker_cluster: ^1.1.1
+  flutter_polyline_points: ^1.0.0
 
 
 dev_dependencies:

@@ -1,51 +1,72 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 part 'places_model.freezed.dart';
+part 'places_model.g.dart';
 
 @freezed
 class PlaceModel with _$PlaceModel {
   const factory PlaceModel({
-    @JsonKey(name: "predictions") List<Prediction>? predictions,
-    @JsonKey(name: "status") String? status,
-  }) = _PlaceModel;
-}
-
-@freezed
-class Prediction with _$Prediction {
-  const factory Prediction({
-    @JsonKey(name: "description") String? description,
-    @JsonKey(name: "matched_substrings")
+    String? description,
     List<MatchedSubstring>? matchedSubstrings,
-    @JsonKey(name: "place_id") String? placeId,
-    @JsonKey(name: "reference") String? reference,
-    @JsonKey(name: "structured_formatting")
+    String? placeId,
+    String? reference,
     StructuredFormatting? structuredFormatting,
-    @JsonKey(name: "terms") List<Term>? terms,
-    @JsonKey(name: "types") List<String>? types,
-  }) = _Prediction;
+    List<Term>? terms,
+    List<String>? types,
+  }) = _PlaceModel;
+
+  factory PlaceModel.fromJson(Map<String, dynamic> json) =>
+      _$PlaceModelFromJson(json);
 }
 
 @freezed
 class MatchedSubstring with _$MatchedSubstring {
+  const MatchedSubstring._(); // Private constructor
+
   const factory MatchedSubstring({
-    @JsonKey(name: "length") int? length,
-    @JsonKey(name: "offset") int? offset,
+    int? length,
+    int? offset,
   }) = _MatchedSubstring;
+
+  factory MatchedSubstring.fromJson(Map<String, dynamic> json) =>
+      _$MatchedSubstringFromJson(json);
 }
 
 @freezed
 class StructuredFormatting with _$StructuredFormatting {
+  const StructuredFormatting._(); // Private constructor
+
   const factory StructuredFormatting({
-    @JsonKey(name: "main_text") String? mainText,
-    @JsonKey(name: "main_text_matched_substrings")
-    List<MatchedSubstring>? mainTextMatchedSubstrings,
-    @JsonKey(name: "secondary_text") String? secondaryText,
+    String? mainText,
+    List<MainTextMatchedSubstring>? mainTextMatchedSubstrings,
+    String? secondaryText,
   }) = _StructuredFormatting;
+
+  factory StructuredFormatting.fromJson(Map<String, dynamic> json) =>
+      _$StructuredFormattingFromJson(json);
+}
+
+@freezed
+class MainTextMatchedSubstring with _$MainTextMatchedSubstring {
+  const MainTextMatchedSubstring._(); // Private constructor
+
+  const factory MainTextMatchedSubstring({
+    int? length,
+    int? offset,
+  }) = _MainTextMatchedSubstring;
+
+  factory MainTextMatchedSubstring.fromJson(Map<String, dynamic> json) =>
+      _$MainTextMatchedSubstringFromJson(json);
 }
 
 @freezed
 class Term with _$Term {
+  const Term._(); // Private constructor
+
   const factory Term({
-    @JsonKey(name: "offset") int? offset,
-    @JsonKey(name: "value") String? value,
+    int? offset,
+    String? value,
   }) = _Term;
+
+  factory Term.fromJson(Map<String, dynamic> json) => _$TermFromJson(json);
 }

@@ -14,13 +14,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+PlaceModel _$PlaceModelFromJson(Map<String, dynamic> json) {
+  return _PlaceModel.fromJson(json);
+}
+
 /// @nodoc
 mixin _$PlaceModel {
-  @JsonKey(name: "predictions")
-  List<Prediction>? get predictions => throw _privateConstructorUsedError;
-  @JsonKey(name: "status")
-  String? get status => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  List<MatchedSubstring>? get matchedSubstrings =>
+      throw _privateConstructorUsedError;
+  String? get placeId => throw _privateConstructorUsedError;
+  String? get reference => throw _privateConstructorUsedError;
+  StructuredFormatting? get structuredFormatting =>
+      throw _privateConstructorUsedError;
+  List<Term>? get terms => throw _privateConstructorUsedError;
+  List<String>? get types => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PlaceModelCopyWith<PlaceModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -33,193 +43,21 @@ abstract class $PlaceModelCopyWith<$Res> {
       _$PlaceModelCopyWithImpl<$Res, PlaceModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: "predictions") List<Prediction>? predictions,
-      @JsonKey(name: "status") String? status});
+      {String? description,
+      List<MatchedSubstring>? matchedSubstrings,
+      String? placeId,
+      String? reference,
+      StructuredFormatting? structuredFormatting,
+      List<Term>? terms,
+      List<String>? types});
+
+  $StructuredFormattingCopyWith<$Res>? get structuredFormatting;
 }
 
 /// @nodoc
 class _$PlaceModelCopyWithImpl<$Res, $Val extends PlaceModel>
     implements $PlaceModelCopyWith<$Res> {
   _$PlaceModelCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? predictions = freezed,
-    Object? status = freezed,
-  }) {
-    return _then(_value.copyWith(
-      predictions: freezed == predictions
-          ? _value.predictions
-          : predictions // ignore: cast_nullable_to_non_nullable
-              as List<Prediction>?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$PlaceModelImplCopyWith<$Res>
-    implements $PlaceModelCopyWith<$Res> {
-  factory _$$PlaceModelImplCopyWith(
-          _$PlaceModelImpl value, $Res Function(_$PlaceModelImpl) then) =
-      __$$PlaceModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: "predictions") List<Prediction>? predictions,
-      @JsonKey(name: "status") String? status});
-}
-
-/// @nodoc
-class __$$PlaceModelImplCopyWithImpl<$Res>
-    extends _$PlaceModelCopyWithImpl<$Res, _$PlaceModelImpl>
-    implements _$$PlaceModelImplCopyWith<$Res> {
-  __$$PlaceModelImplCopyWithImpl(
-      _$PlaceModelImpl _value, $Res Function(_$PlaceModelImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? predictions = freezed,
-    Object? status = freezed,
-  }) {
-    return _then(_$PlaceModelImpl(
-      predictions: freezed == predictions
-          ? _value._predictions
-          : predictions // ignore: cast_nullable_to_non_nullable
-              as List<Prediction>?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$PlaceModelImpl implements _PlaceModel {
-  const _$PlaceModelImpl(
-      {@JsonKey(name: "predictions") final List<Prediction>? predictions,
-      @JsonKey(name: "status") this.status})
-      : _predictions = predictions;
-
-  final List<Prediction>? _predictions;
-  @override
-  @JsonKey(name: "predictions")
-  List<Prediction>? get predictions {
-    final value = _predictions;
-    if (value == null) return null;
-    if (_predictions is EqualUnmodifiableListView) return _predictions;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  @JsonKey(name: "status")
-  final String? status;
-
-  @override
-  String toString() {
-    return 'PlaceModel(predictions: $predictions, status: $status)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PlaceModelImpl &&
-            const DeepCollectionEquality()
-                .equals(other._predictions, _predictions) &&
-            (identical(other.status, status) || other.status == status));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_predictions), status);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PlaceModelImplCopyWith<_$PlaceModelImpl> get copyWith =>
-      __$$PlaceModelImplCopyWithImpl<_$PlaceModelImpl>(this, _$identity);
-}
-
-abstract class _PlaceModel implements PlaceModel {
-  const factory _PlaceModel(
-      {@JsonKey(name: "predictions") final List<Prediction>? predictions,
-      @JsonKey(name: "status") final String? status}) = _$PlaceModelImpl;
-
-  @override
-  @JsonKey(name: "predictions")
-  List<Prediction>? get predictions;
-  @override
-  @JsonKey(name: "status")
-  String? get status;
-  @override
-  @JsonKey(ignore: true)
-  _$$PlaceModelImplCopyWith<_$PlaceModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$Prediction {
-  @JsonKey(name: "description")
-  String? get description => throw _privateConstructorUsedError;
-  @JsonKey(name: "matched_substrings")
-  List<MatchedSubstring>? get matchedSubstrings =>
-      throw _privateConstructorUsedError;
-  @JsonKey(name: "place_id")
-  String? get placeId => throw _privateConstructorUsedError;
-  @JsonKey(name: "reference")
-  String? get reference => throw _privateConstructorUsedError;
-  @JsonKey(name: "structured_formatting")
-  StructuredFormatting? get structuredFormatting =>
-      throw _privateConstructorUsedError;
-  @JsonKey(name: "terms")
-  List<Term>? get terms => throw _privateConstructorUsedError;
-  @JsonKey(name: "types")
-  List<String>? get types => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $PredictionCopyWith<Prediction> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PredictionCopyWith<$Res> {
-  factory $PredictionCopyWith(
-          Prediction value, $Res Function(Prediction) then) =
-      _$PredictionCopyWithImpl<$Res, Prediction>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: "description") String? description,
-      @JsonKey(name: "matched_substrings")
-      List<MatchedSubstring>? matchedSubstrings,
-      @JsonKey(name: "place_id") String? placeId,
-      @JsonKey(name: "reference") String? reference,
-      @JsonKey(name: "structured_formatting")
-      StructuredFormatting? structuredFormatting,
-      @JsonKey(name: "terms") List<Term>? terms,
-      @JsonKey(name: "types") List<String>? types});
-
-  $StructuredFormattingCopyWith<$Res>? get structuredFormatting;
-}
-
-/// @nodoc
-class _$PredictionCopyWithImpl<$Res, $Val extends Prediction>
-    implements $PredictionCopyWith<$Res> {
-  _$PredictionCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -284,34 +122,32 @@ class _$PredictionCopyWithImpl<$Res, $Val extends Prediction>
 }
 
 /// @nodoc
-abstract class _$$PredictionImplCopyWith<$Res>
-    implements $PredictionCopyWith<$Res> {
-  factory _$$PredictionImplCopyWith(
-          _$PredictionImpl value, $Res Function(_$PredictionImpl) then) =
-      __$$PredictionImplCopyWithImpl<$Res>;
+abstract class _$$PlaceModelImplCopyWith<$Res>
+    implements $PlaceModelCopyWith<$Res> {
+  factory _$$PlaceModelImplCopyWith(
+          _$PlaceModelImpl value, $Res Function(_$PlaceModelImpl) then) =
+      __$$PlaceModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "description") String? description,
-      @JsonKey(name: "matched_substrings")
+      {String? description,
       List<MatchedSubstring>? matchedSubstrings,
-      @JsonKey(name: "place_id") String? placeId,
-      @JsonKey(name: "reference") String? reference,
-      @JsonKey(name: "structured_formatting")
+      String? placeId,
+      String? reference,
       StructuredFormatting? structuredFormatting,
-      @JsonKey(name: "terms") List<Term>? terms,
-      @JsonKey(name: "types") List<String>? types});
+      List<Term>? terms,
+      List<String>? types});
 
   @override
   $StructuredFormattingCopyWith<$Res>? get structuredFormatting;
 }
 
 /// @nodoc
-class __$$PredictionImplCopyWithImpl<$Res>
-    extends _$PredictionCopyWithImpl<$Res, _$PredictionImpl>
-    implements _$$PredictionImplCopyWith<$Res> {
-  __$$PredictionImplCopyWithImpl(
-      _$PredictionImpl _value, $Res Function(_$PredictionImpl) _then)
+class __$$PlaceModelImplCopyWithImpl<$Res>
+    extends _$PlaceModelCopyWithImpl<$Res, _$PlaceModelImpl>
+    implements _$$PlaceModelImplCopyWith<$Res> {
+  __$$PlaceModelImplCopyWithImpl(
+      _$PlaceModelImpl _value, $Res Function(_$PlaceModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -325,7 +161,7 @@ class __$$PredictionImplCopyWithImpl<$Res>
     Object? terms = freezed,
     Object? types = freezed,
   }) {
-    return _then(_$PredictionImpl(
+    return _then(_$PlaceModelImpl(
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -359,27 +195,27 @@ class __$$PredictionImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-class _$PredictionImpl implements _Prediction {
-  const _$PredictionImpl(
-      {@JsonKey(name: "description") this.description,
-      @JsonKey(name: "matched_substrings")
+@JsonSerializable()
+class _$PlaceModelImpl implements _PlaceModel {
+  const _$PlaceModelImpl(
+      {this.description,
       final List<MatchedSubstring>? matchedSubstrings,
-      @JsonKey(name: "place_id") this.placeId,
-      @JsonKey(name: "reference") this.reference,
-      @JsonKey(name: "structured_formatting") this.structuredFormatting,
-      @JsonKey(name: "terms") final List<Term>? terms,
-      @JsonKey(name: "types") final List<String>? types})
+      this.placeId,
+      this.reference,
+      this.structuredFormatting,
+      final List<Term>? terms,
+      final List<String>? types})
       : _matchedSubstrings = matchedSubstrings,
         _terms = terms,
         _types = types;
 
+  factory _$PlaceModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PlaceModelImplFromJson(json);
+
   @override
-  @JsonKey(name: "description")
   final String? description;
   final List<MatchedSubstring>? _matchedSubstrings;
   @override
-  @JsonKey(name: "matched_substrings")
   List<MatchedSubstring>? get matchedSubstrings {
     final value = _matchedSubstrings;
     if (value == null) return null;
@@ -390,17 +226,13 @@ class _$PredictionImpl implements _Prediction {
   }
 
   @override
-  @JsonKey(name: "place_id")
   final String? placeId;
   @override
-  @JsonKey(name: "reference")
   final String? reference;
   @override
-  @JsonKey(name: "structured_formatting")
   final StructuredFormatting? structuredFormatting;
   final List<Term>? _terms;
   @override
-  @JsonKey(name: "terms")
   List<Term>? get terms {
     final value = _terms;
     if (value == null) return null;
@@ -411,7 +243,6 @@ class _$PredictionImpl implements _Prediction {
 
   final List<String>? _types;
   @override
-  @JsonKey(name: "types")
   List<String>? get types {
     final value = _types;
     if (value == null) return null;
@@ -422,14 +253,14 @@ class _$PredictionImpl implements _Prediction {
 
   @override
   String toString() {
-    return 'Prediction(description: $description, matchedSubstrings: $matchedSubstrings, placeId: $placeId, reference: $reference, structuredFormatting: $structuredFormatting, terms: $terms, types: $types)';
+    return 'PlaceModel(description: $description, matchedSubstrings: $matchedSubstrings, placeId: $placeId, reference: $reference, structuredFormatting: $structuredFormatting, terms: $terms, types: $types)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PredictionImpl &&
+            other is _$PlaceModelImpl &&
             (identical(other.description, description) ||
                 other.description == description) &&
             const DeepCollectionEquality()
@@ -443,6 +274,7 @@ class _$PredictionImpl implements _Prediction {
             const DeepCollectionEquality().equals(other._types, _types));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -457,56 +289,60 @@ class _$PredictionImpl implements _Prediction {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PredictionImplCopyWith<_$PredictionImpl> get copyWith =>
-      __$$PredictionImplCopyWithImpl<_$PredictionImpl>(this, _$identity);
+  _$$PlaceModelImplCopyWith<_$PlaceModelImpl> get copyWith =>
+      __$$PlaceModelImplCopyWithImpl<_$PlaceModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PlaceModelImplToJson(
+      this,
+    );
+  }
 }
 
-abstract class _Prediction implements Prediction {
-  const factory _Prediction(
-      {@JsonKey(name: "description") final String? description,
-      @JsonKey(name: "matched_substrings")
+abstract class _PlaceModel implements PlaceModel {
+  const factory _PlaceModel(
+      {final String? description,
       final List<MatchedSubstring>? matchedSubstrings,
-      @JsonKey(name: "place_id") final String? placeId,
-      @JsonKey(name: "reference") final String? reference,
-      @JsonKey(name: "structured_formatting")
+      final String? placeId,
+      final String? reference,
       final StructuredFormatting? structuredFormatting,
-      @JsonKey(name: "terms") final List<Term>? terms,
-      @JsonKey(name: "types") final List<String>? types}) = _$PredictionImpl;
+      final List<Term>? terms,
+      final List<String>? types}) = _$PlaceModelImpl;
+
+  factory _PlaceModel.fromJson(Map<String, dynamic> json) =
+      _$PlaceModelImpl.fromJson;
 
   @override
-  @JsonKey(name: "description")
   String? get description;
   @override
-  @JsonKey(name: "matched_substrings")
   List<MatchedSubstring>? get matchedSubstrings;
   @override
-  @JsonKey(name: "place_id")
   String? get placeId;
   @override
-  @JsonKey(name: "reference")
   String? get reference;
   @override
-  @JsonKey(name: "structured_formatting")
   StructuredFormatting? get structuredFormatting;
   @override
-  @JsonKey(name: "terms")
   List<Term>? get terms;
   @override
-  @JsonKey(name: "types")
   List<String>? get types;
   @override
   @JsonKey(ignore: true)
-  _$$PredictionImplCopyWith<_$PredictionImpl> get copyWith =>
+  _$$PlaceModelImplCopyWith<_$PlaceModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+MatchedSubstring _$MatchedSubstringFromJson(Map<String, dynamic> json) {
+  return _MatchedSubstring.fromJson(json);
 }
 
 /// @nodoc
 mixin _$MatchedSubstring {
-  @JsonKey(name: "length")
   int? get length => throw _privateConstructorUsedError;
-  @JsonKey(name: "offset")
   int? get offset => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $MatchedSubstringCopyWith<MatchedSubstring> get copyWith =>
       throw _privateConstructorUsedError;
@@ -518,9 +354,7 @@ abstract class $MatchedSubstringCopyWith<$Res> {
           MatchedSubstring value, $Res Function(MatchedSubstring) then) =
       _$MatchedSubstringCopyWithImpl<$Res, MatchedSubstring>;
   @useResult
-  $Res call(
-      {@JsonKey(name: "length") int? length,
-      @JsonKey(name: "offset") int? offset});
+  $Res call({int? length, int? offset});
 }
 
 /// @nodoc
@@ -560,9 +394,7 @@ abstract class _$$MatchedSubstringImplCopyWith<$Res>
       __$$MatchedSubstringImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "length") int? length,
-      @JsonKey(name: "offset") int? offset});
+  $Res call({int? length, int? offset});
 }
 
 /// @nodoc
@@ -593,17 +425,16 @@ class __$$MatchedSubstringImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$MatchedSubstringImpl extends _MatchedSubstring {
+  const _$MatchedSubstringImpl({this.length, this.offset}) : super._();
 
-class _$MatchedSubstringImpl implements _MatchedSubstring {
-  const _$MatchedSubstringImpl(
-      {@JsonKey(name: "length") this.length,
-      @JsonKey(name: "offset") this.offset});
+  factory _$MatchedSubstringImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MatchedSubstringImplFromJson(json);
 
   @override
-  @JsonKey(name: "length")
   final int? length;
   @override
-  @JsonKey(name: "offset")
   final int? offset;
 
   @override
@@ -620,6 +451,7 @@ class _$MatchedSubstringImpl implements _MatchedSubstring {
             (identical(other.offset, offset) || other.offset == offset));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, length, offset);
 
@@ -629,18 +461,26 @@ class _$MatchedSubstringImpl implements _MatchedSubstring {
   _$$MatchedSubstringImplCopyWith<_$MatchedSubstringImpl> get copyWith =>
       __$$MatchedSubstringImplCopyWithImpl<_$MatchedSubstringImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MatchedSubstringImplToJson(
+      this,
+    );
+  }
 }
 
-abstract class _MatchedSubstring implements MatchedSubstring {
-  const factory _MatchedSubstring(
-      {@JsonKey(name: "length") final int? length,
-      @JsonKey(name: "offset") final int? offset}) = _$MatchedSubstringImpl;
+abstract class _MatchedSubstring extends MatchedSubstring {
+  const factory _MatchedSubstring({final int? length, final int? offset}) =
+      _$MatchedSubstringImpl;
+  const _MatchedSubstring._() : super._();
+
+  factory _MatchedSubstring.fromJson(Map<String, dynamic> json) =
+      _$MatchedSubstringImpl.fromJson;
 
   @override
-  @JsonKey(name: "length")
   int? get length;
   @override
-  @JsonKey(name: "offset")
   int? get offset;
   @override
   @JsonKey(ignore: true)
@@ -648,16 +488,18 @@ abstract class _MatchedSubstring implements MatchedSubstring {
       throw _privateConstructorUsedError;
 }
 
+StructuredFormatting _$StructuredFormattingFromJson(Map<String, dynamic> json) {
+  return _StructuredFormatting.fromJson(json);
+}
+
 /// @nodoc
 mixin _$StructuredFormatting {
-  @JsonKey(name: "main_text")
   String? get mainText => throw _privateConstructorUsedError;
-  @JsonKey(name: "main_text_matched_substrings")
-  List<MatchedSubstring>? get mainTextMatchedSubstrings =>
+  List<MainTextMatchedSubstring>? get mainTextMatchedSubstrings =>
       throw _privateConstructorUsedError;
-  @JsonKey(name: "secondary_text")
   String? get secondaryText => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $StructuredFormattingCopyWith<StructuredFormatting> get copyWith =>
       throw _privateConstructorUsedError;
@@ -670,10 +512,9 @@ abstract class $StructuredFormattingCopyWith<$Res> {
       _$StructuredFormattingCopyWithImpl<$Res, StructuredFormatting>;
   @useResult
   $Res call(
-      {@JsonKey(name: "main_text") String? mainText,
-      @JsonKey(name: "main_text_matched_substrings")
-      List<MatchedSubstring>? mainTextMatchedSubstrings,
-      @JsonKey(name: "secondary_text") String? secondaryText});
+      {String? mainText,
+      List<MainTextMatchedSubstring>? mainTextMatchedSubstrings,
+      String? secondaryText});
 }
 
 /// @nodoc
@@ -702,7 +543,7 @@ class _$StructuredFormattingCopyWithImpl<$Res,
       mainTextMatchedSubstrings: freezed == mainTextMatchedSubstrings
           ? _value.mainTextMatchedSubstrings
           : mainTextMatchedSubstrings // ignore: cast_nullable_to_non_nullable
-              as List<MatchedSubstring>?,
+              as List<MainTextMatchedSubstring>?,
       secondaryText: freezed == secondaryText
           ? _value.secondaryText
           : secondaryText // ignore: cast_nullable_to_non_nullable
@@ -720,10 +561,9 @@ abstract class _$$StructuredFormattingImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "main_text") String? mainText,
-      @JsonKey(name: "main_text_matched_substrings")
-      List<MatchedSubstring>? mainTextMatchedSubstrings,
-      @JsonKey(name: "secondary_text") String? secondaryText});
+      {String? mainText,
+      List<MainTextMatchedSubstring>? mainTextMatchedSubstrings,
+      String? secondaryText});
 }
 
 /// @nodoc
@@ -749,7 +589,7 @@ class __$$StructuredFormattingImplCopyWithImpl<$Res>
       mainTextMatchedSubstrings: freezed == mainTextMatchedSubstrings
           ? _value._mainTextMatchedSubstrings
           : mainTextMatchedSubstrings // ignore: cast_nullable_to_non_nullable
-              as List<MatchedSubstring>?,
+              as List<MainTextMatchedSubstring>?,
       secondaryText: freezed == secondaryText
           ? _value.secondaryText
           : secondaryText // ignore: cast_nullable_to_non_nullable
@@ -759,22 +599,23 @@ class __$$StructuredFormattingImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-class _$StructuredFormattingImpl implements _StructuredFormatting {
+@JsonSerializable()
+class _$StructuredFormattingImpl extends _StructuredFormatting {
   const _$StructuredFormattingImpl(
-      {@JsonKey(name: "main_text") this.mainText,
-      @JsonKey(name: "main_text_matched_substrings")
-      final List<MatchedSubstring>? mainTextMatchedSubstrings,
-      @JsonKey(name: "secondary_text") this.secondaryText})
-      : _mainTextMatchedSubstrings = mainTextMatchedSubstrings;
+      {this.mainText,
+      final List<MainTextMatchedSubstring>? mainTextMatchedSubstrings,
+      this.secondaryText})
+      : _mainTextMatchedSubstrings = mainTextMatchedSubstrings,
+        super._();
+
+  factory _$StructuredFormattingImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StructuredFormattingImplFromJson(json);
 
   @override
-  @JsonKey(name: "main_text")
   final String? mainText;
-  final List<MatchedSubstring>? _mainTextMatchedSubstrings;
+  final List<MainTextMatchedSubstring>? _mainTextMatchedSubstrings;
   @override
-  @JsonKey(name: "main_text_matched_substrings")
-  List<MatchedSubstring>? get mainTextMatchedSubstrings {
+  List<MainTextMatchedSubstring>? get mainTextMatchedSubstrings {
     final value = _mainTextMatchedSubstrings;
     if (value == null) return null;
     if (_mainTextMatchedSubstrings is EqualUnmodifiableListView)
@@ -784,7 +625,6 @@ class _$StructuredFormattingImpl implements _StructuredFormatting {
   }
 
   @override
-  @JsonKey(name: "secondary_text")
   final String? secondaryText;
 
   @override
@@ -805,6 +645,7 @@ class _$StructuredFormattingImpl implements _StructuredFormatting {
                 other.secondaryText == secondaryText));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -819,24 +660,30 @@ class _$StructuredFormattingImpl implements _StructuredFormatting {
       get copyWith =>
           __$$StructuredFormattingImplCopyWithImpl<_$StructuredFormattingImpl>(
               this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$StructuredFormattingImplToJson(
+      this,
+    );
+  }
 }
 
-abstract class _StructuredFormatting implements StructuredFormatting {
+abstract class _StructuredFormatting extends StructuredFormatting {
   const factory _StructuredFormatting(
-          {@JsonKey(name: "main_text") final String? mainText,
-          @JsonKey(name: "main_text_matched_substrings")
-          final List<MatchedSubstring>? mainTextMatchedSubstrings,
-          @JsonKey(name: "secondary_text") final String? secondaryText}) =
-      _$StructuredFormattingImpl;
+      {final String? mainText,
+      final List<MainTextMatchedSubstring>? mainTextMatchedSubstrings,
+      final String? secondaryText}) = _$StructuredFormattingImpl;
+  const _StructuredFormatting._() : super._();
+
+  factory _StructuredFormatting.fromJson(Map<String, dynamic> json) =
+      _$StructuredFormattingImpl.fromJson;
 
   @override
-  @JsonKey(name: "main_text")
   String? get mainText;
   @override
-  @JsonKey(name: "main_text_matched_substrings")
-  List<MatchedSubstring>? get mainTextMatchedSubstrings;
+  List<MainTextMatchedSubstring>? get mainTextMatchedSubstrings;
   @override
-  @JsonKey(name: "secondary_text")
   String? get secondaryText;
   @override
   @JsonKey(ignore: true)
@@ -844,13 +691,176 @@ abstract class _StructuredFormatting implements StructuredFormatting {
       get copyWith => throw _privateConstructorUsedError;
 }
 
+MainTextMatchedSubstring _$MainTextMatchedSubstringFromJson(
+    Map<String, dynamic> json) {
+  return _MainTextMatchedSubstring.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MainTextMatchedSubstring {
+  int? get length => throw _privateConstructorUsedError;
+  int? get offset => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MainTextMatchedSubstringCopyWith<MainTextMatchedSubstring> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MainTextMatchedSubstringCopyWith<$Res> {
+  factory $MainTextMatchedSubstringCopyWith(MainTextMatchedSubstring value,
+          $Res Function(MainTextMatchedSubstring) then) =
+      _$MainTextMatchedSubstringCopyWithImpl<$Res, MainTextMatchedSubstring>;
+  @useResult
+  $Res call({int? length, int? offset});
+}
+
+/// @nodoc
+class _$MainTextMatchedSubstringCopyWithImpl<$Res,
+        $Val extends MainTextMatchedSubstring>
+    implements $MainTextMatchedSubstringCopyWith<$Res> {
+  _$MainTextMatchedSubstringCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? length = freezed,
+    Object? offset = freezed,
+  }) {
+    return _then(_value.copyWith(
+      length: freezed == length
+          ? _value.length
+          : length // ignore: cast_nullable_to_non_nullable
+              as int?,
+      offset: freezed == offset
+          ? _value.offset
+          : offset // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$MainTextMatchedSubstringImplCopyWith<$Res>
+    implements $MainTextMatchedSubstringCopyWith<$Res> {
+  factory _$$MainTextMatchedSubstringImplCopyWith(
+          _$MainTextMatchedSubstringImpl value,
+          $Res Function(_$MainTextMatchedSubstringImpl) then) =
+      __$$MainTextMatchedSubstringImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int? length, int? offset});
+}
+
+/// @nodoc
+class __$$MainTextMatchedSubstringImplCopyWithImpl<$Res>
+    extends _$MainTextMatchedSubstringCopyWithImpl<$Res,
+        _$MainTextMatchedSubstringImpl>
+    implements _$$MainTextMatchedSubstringImplCopyWith<$Res> {
+  __$$MainTextMatchedSubstringImplCopyWithImpl(
+      _$MainTextMatchedSubstringImpl _value,
+      $Res Function(_$MainTextMatchedSubstringImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? length = freezed,
+    Object? offset = freezed,
+  }) {
+    return _then(_$MainTextMatchedSubstringImpl(
+      length: freezed == length
+          ? _value.length
+          : length // ignore: cast_nullable_to_non_nullable
+              as int?,
+      offset: freezed == offset
+          ? _value.offset
+          : offset // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$MainTextMatchedSubstringImpl extends _MainTextMatchedSubstring {
+  const _$MainTextMatchedSubstringImpl({this.length, this.offset}) : super._();
+
+  factory _$MainTextMatchedSubstringImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MainTextMatchedSubstringImplFromJson(json);
+
+  @override
+  final int? length;
+  @override
+  final int? offset;
+
+  @override
+  String toString() {
+    return 'MainTextMatchedSubstring(length: $length, offset: $offset)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MainTextMatchedSubstringImpl &&
+            (identical(other.length, length) || other.length == length) &&
+            (identical(other.offset, offset) || other.offset == offset));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, length, offset);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MainTextMatchedSubstringImplCopyWith<_$MainTextMatchedSubstringImpl>
+      get copyWith => __$$MainTextMatchedSubstringImplCopyWithImpl<
+          _$MainTextMatchedSubstringImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MainTextMatchedSubstringImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _MainTextMatchedSubstring extends MainTextMatchedSubstring {
+  const factory _MainTextMatchedSubstring(
+      {final int? length, final int? offset}) = _$MainTextMatchedSubstringImpl;
+  const _MainTextMatchedSubstring._() : super._();
+
+  factory _MainTextMatchedSubstring.fromJson(Map<String, dynamic> json) =
+      _$MainTextMatchedSubstringImpl.fromJson;
+
+  @override
+  int? get length;
+  @override
+  int? get offset;
+  @override
+  @JsonKey(ignore: true)
+  _$$MainTextMatchedSubstringImplCopyWith<_$MainTextMatchedSubstringImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+Term _$TermFromJson(Map<String, dynamic> json) {
+  return _Term.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Term {
-  @JsonKey(name: "offset")
   int? get offset => throw _privateConstructorUsedError;
-  @JsonKey(name: "value")
   String? get value => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $TermCopyWith<Term> get copyWith => throw _privateConstructorUsedError;
 }
@@ -860,9 +870,7 @@ abstract class $TermCopyWith<$Res> {
   factory $TermCopyWith(Term value, $Res Function(Term) then) =
       _$TermCopyWithImpl<$Res, Term>;
   @useResult
-  $Res call(
-      {@JsonKey(name: "offset") int? offset,
-      @JsonKey(name: "value") String? value});
+  $Res call({int? offset, String? value});
 }
 
 /// @nodoc
@@ -901,9 +909,7 @@ abstract class _$$TermImplCopyWith<$Res> implements $TermCopyWith<$Res> {
       __$$TermImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "offset") int? offset,
-      @JsonKey(name: "value") String? value});
+  $Res call({int? offset, String? value});
 }
 
 /// @nodoc
@@ -933,17 +939,16 @@ class __$$TermImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$TermImpl extends _Term {
+  const _$TermImpl({this.offset, this.value}) : super._();
 
-class _$TermImpl implements _Term {
-  const _$TermImpl(
-      {@JsonKey(name: "offset") this.offset,
-      @JsonKey(name: "value") this.value});
+  factory _$TermImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TermImplFromJson(json);
 
   @override
-  @JsonKey(name: "offset")
   final int? offset;
   @override
-  @JsonKey(name: "value")
   final String? value;
 
   @override
@@ -960,6 +965,7 @@ class _$TermImpl implements _Term {
             (identical(other.value, value) || other.value == value));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, offset, value);
 
@@ -968,18 +974,24 @@ class _$TermImpl implements _Term {
   @pragma('vm:prefer-inline')
   _$$TermImplCopyWith<_$TermImpl> get copyWith =>
       __$$TermImplCopyWithImpl<_$TermImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TermImplToJson(
+      this,
+    );
+  }
 }
 
-abstract class _Term implements Term {
-  const factory _Term(
-      {@JsonKey(name: "offset") final int? offset,
-      @JsonKey(name: "value") final String? value}) = _$TermImpl;
+abstract class _Term extends Term {
+  const factory _Term({final int? offset, final String? value}) = _$TermImpl;
+  const _Term._() : super._();
+
+  factory _Term.fromJson(Map<String, dynamic> json) = _$TermImpl.fromJson;
 
   @override
-  @JsonKey(name: "offset")
   int? get offset;
   @override
-  @JsonKey(name: "value")
   String? get value;
   @override
   @JsonKey(ignore: true)
