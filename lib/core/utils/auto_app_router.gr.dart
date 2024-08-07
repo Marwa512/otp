@@ -21,6 +21,17 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MapScreen(),
       );
     },
+    NotificationDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<NotificationDetailsRouteArgs>(
+          orElse: () => const NotificationDetailsRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: NotificationDetailsScreen(
+          key: args.key,
+          notificationEntity: args.notificationEntity,
+        ),
+      );
+    },
     OtpRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -48,6 +59,45 @@ class MapRoute extends PageRouteInfo<void> {
   static const String name = 'MapRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [NotificationDetailsScreen]
+class NotificationDetailsRoute
+    extends PageRouteInfo<NotificationDetailsRouteArgs> {
+  NotificationDetailsRoute({
+    Key? key,
+    NotificationEntity? notificationEntity,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NotificationDetailsRoute.name,
+          args: NotificationDetailsRouteArgs(
+            key: key,
+            notificationEntity: notificationEntity,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'NotificationDetailsRoute';
+
+  static const PageInfo<NotificationDetailsRouteArgs> page =
+      PageInfo<NotificationDetailsRouteArgs>(name);
+}
+
+class NotificationDetailsRouteArgs {
+  const NotificationDetailsRouteArgs({
+    this.key,
+    this.notificationEntity,
+  });
+
+  final Key? key;
+
+  final NotificationEntity? notificationEntity;
+
+  @override
+  String toString() {
+    return 'NotificationDetailsRouteArgs{key: $key, notificationEntity: $notificationEntity}';
+  }
 }
 
 /// generated route for

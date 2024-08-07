@@ -36,7 +36,7 @@ abstract class $LocationInfoModelCopyWith<$Res> {
   @useResult
   $Res call({LocationModel? location});
 
-  $LocationCopyWith<$Res>? get location;
+  $LocationModelCopyWith<$Res>? get location;
 }
 
 /// @nodoc
@@ -64,12 +64,12 @@ class _$LocationInfoModelCopyWithImpl<$Res, $Val extends LocationInfoModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $LocationCopyWith<$Res>? get location {
+  $LocationModelCopyWith<$Res>? get location {
     if (_value.location == null) {
       return null;
     }
 
-    return $LocationCopyWith<$Res>(_value.location!, (value) {
+    return $LocationModelCopyWith<$Res>(_value.location!, (value) {
       return _then(_value.copyWith(location: value) as $Val);
     });
   }
@@ -86,7 +86,7 @@ abstract class _$$LocationInfoModelImplCopyWith<$Res>
   $Res call({LocationModel? location});
 
   @override
-  $LocationCopyWith<$Res>? get location;
+  $LocationModelCopyWith<$Res>? get location;
 }
 
 /// @nodoc

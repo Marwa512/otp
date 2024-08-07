@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -7,7 +8,7 @@ import 'package:injectable/injectable.dart';
 import 'package:opt_page/features/map/data/data_resources/remote/map_dio.dart';
 import 'package:opt_page/features/map/data/model/routes_modifiers/routes_modifiers.dart';
 import 'package:opt_page/features/map/data/model/location_info_model/lat_lng.dart';
-import 'package:opt_page/features/map/data/model/location_info_model/location.dart';
+import 'package:opt_page/features/map/data/model/location_info_model/location_model.dart';
 import 'package:opt_page/features/map/data/model/location_info_model/location_info_model.dart';
 import 'package:opt_page/features/map/data/model/place_detail/place_detail.dart';
 import 'package:opt_page/features/map/data/model/places_model.dart';
@@ -49,8 +50,10 @@ class MapRepoImp implements MapRepo {
   }
 
   Future<RoutesModel> getRouteData({required LatLng desintation}) async {
-    print('current location');
-    print(currentLocation);
+    if (kDebugMode) {
+      print('current location');
+      print(currentLocation);
+    }
     LocationInfoModel origin = LocationInfoModel(
       location: LocationModel(
           latLng: LatLngModel(
@@ -74,7 +77,9 @@ class MapRepoImp implements MapRepo {
 
   List<LatLng> getDecodedRoute(
       PolylinePoints polylinePoints, RoutesModel routes) {
-    print("routes $routes");
+    if (kDebugMode) {
+      print("routes $routes");
+    }
     List<PointLatLng> result = polylinePoints.decodePolyline(
       routes.polyline!.encodedPolyline!,
     );
@@ -128,7 +133,9 @@ class MapRepoImp implements MapRepo {
         "assets/img/current_location.png",
       );
       currentLocation = LatLng(locationData.latitude!, locationData.longitude!);
-      print("current location $currentLocation location data $locationData");
+      if (kDebugMode) {
+        print("current location $currentLocation location data $locationData");
+      }
       Marker currentLocationMarker = Marker(
         icon: markerIcon,
         markerId: const MarkerId('my location'),

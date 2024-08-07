@@ -14,33 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-LatLngModel _$LatLngFromJson(Map<String, dynamic> json) {
+LatLngModel _$LatLngModelFromJson(Map<String, dynamic> json) {
   return _LatLng.fromJson(json);
 }
 
 /// @nodoc
-mixin _$LatLng {
+mixin _$LatLngModel {
   double? get latitude => throw _privateConstructorUsedError;
   double? get longitude => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LatLngCopyWith<LatLngModel> get copyWith =>
+  $LatLngModelCopyWith<LatLngModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LatLngCopyWith<$Res> {
-  factory $LatLngCopyWith(LatLngModel value, $Res Function(LatLngModel) then) =
-      _$LatLngCopyWithImpl<$Res, LatLngModel>;
+abstract class $LatLngModelCopyWith<$Res> {
+  factory $LatLngModelCopyWith(
+          LatLngModel value, $Res Function(LatLngModel) then) =
+      _$LatLngModelCopyWithImpl<$Res, LatLngModel>;
   @useResult
   $Res call({double? latitude, double? longitude});
 }
 
 /// @nodoc
-class _$LatLngCopyWithImpl<$Res, $Val extends LatLngModel>
-    implements $LatLngCopyWith<$Res> {
-  _$LatLngCopyWithImpl(this._value, this._then);
+class _$LatLngModelCopyWithImpl<$Res, $Val extends LatLngModel>
+    implements $LatLngModelCopyWith<$Res> {
+  _$LatLngModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -67,7 +68,8 @@ class _$LatLngCopyWithImpl<$Res, $Val extends LatLngModel>
 }
 
 /// @nodoc
-abstract class _$$LatLngImplCopyWith<$Res> implements $LatLngCopyWith<$Res> {
+abstract class _$$LatLngImplCopyWith<$Res>
+    implements $LatLngModelCopyWith<$Res> {
   factory _$$LatLngImplCopyWith(
           _$LatLngImpl value, $Res Function(_$LatLngImpl) then) =
       __$$LatLngImplCopyWithImpl<$Res>;
@@ -78,7 +80,7 @@ abstract class _$$LatLngImplCopyWith<$Res> implements $LatLngCopyWith<$Res> {
 
 /// @nodoc
 class __$$LatLngImplCopyWithImpl<$Res>
-    extends _$LatLngCopyWithImpl<$Res, _$LatLngImpl>
+    extends _$LatLngModelCopyWithImpl<$Res, _$LatLngImpl>
     implements _$$LatLngImplCopyWith<$Res> {
   __$$LatLngImplCopyWithImpl(
       _$LatLngImpl _value, $Res Function(_$LatLngImpl) _then)
@@ -118,7 +120,7 @@ class _$LatLngImpl implements _LatLng {
 
   @override
   String toString() {
-    return 'LatLng(latitude: $latitude, longitude: $longitude)';
+    return 'LatLngModel(latitude: $latitude, longitude: $longitude)';
   }
 
   @override

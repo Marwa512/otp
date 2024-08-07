@@ -12,7 +12,7 @@ class CustomTextField extends StatelessWidget {
           filled: true,
           enabledBorder: buildBorder(),
           focusedBorder: buildBorder(),
-          fillColor: Colors.white,
+          fillColor: Colors.grey.withOpacity(.5),
           hintText: "عقارك المفضل بانتظارك! ابحث الان"),
     );
   }

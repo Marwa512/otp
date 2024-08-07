@@ -12,6 +12,7 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:opt_page/core/injection/register_module.dart' as _i649;
+import 'package:opt_page/core/utils/auto_app_router.dart' as _i472;
 import 'package:opt_page/features/map/data/data_resources/remote/map_dio.dart'
     as _i834;
 import 'package:opt_page/features/map/data/repository/map_repo_imp.dart'
@@ -52,6 +53,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i0.RestClient>(() => registerModule.restClient);
     gh.singleton<_i839.SharedPreferencesProvider>(
         () => registerModule.sharedPref);
+    gh.singleton<_i472.AppRouter>(() => _i472.AppRouter());
     gh.factory<_i199.OtpRepoImp>(() => _i199.OtpRepoImp(
           gh<_i0.RestClient>(),
           gh<_i642.ProfileLocalData>(),

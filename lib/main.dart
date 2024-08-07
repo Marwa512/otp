@@ -41,7 +41,7 @@ class OtpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppRouter approuter = AppRouter();
+    AppRouter approuter = getIt<AppRouter>();
     return BlocProvider(
       create: (context) => AppBloc(getIt<SharedPreferencesProvider>()),
       child: BlocBuilder<AppBloc, AppState>(builder: (context, state) {

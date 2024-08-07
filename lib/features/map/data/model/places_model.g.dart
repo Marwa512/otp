@@ -9,15 +9,15 @@ part of 'places_model.dart';
 _$PlaceModelImpl _$$PlaceModelImplFromJson(Map<String, dynamic> json) =>
     _$PlaceModelImpl(
       description: json['description'] as String?,
-      matchedSubstrings: (json['matched_substrings'] as List<dynamic>?)
+      matchedSubstrings: (json['matchedSubstrings'] as List<dynamic>?)
           ?.map((e) => MatchedSubstring.fromJson(e as Map<String, dynamic>))
           .toList(),
-      placeId: json['place_id'] as String?,
+      placeId: json['placeId'] as String?,
       reference: json['reference'] as String?,
-      structuredFormatting: json['structured_formatting'] == null
+      structuredFormatting: json['structuredFormatting'] == null
           ? null
           : StructuredFormatting.fromJson(
-              json['structured_formatting'] as Map<String, dynamic>),
+              json['structuredFormatting'] as Map<String, dynamic>),
       terms: (json['terms'] as List<dynamic>?)
           ?.map((e) => Term.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -53,13 +53,13 @@ Map<String, dynamic> _$$MatchedSubstringImplToJson(
 _$StructuredFormattingImpl _$$StructuredFormattingImplFromJson(
         Map<String, dynamic> json) =>
     _$StructuredFormattingImpl(
-      mainText: json['main_text'] as String?,
+      mainText: json['mainText'] as String?,
       mainTextMatchedSubstrings:
-          (json['main_text_matched_substrings'] as List<dynamic>?)
+          (json['mainTextMatchedSubstrings'] as List<dynamic>?)
               ?.map((e) =>
                   MainTextMatchedSubstring.fromJson(e as Map<String, dynamic>))
               .toList(),
-      secondaryText: json['secondary_text'] as String?,
+      secondaryText: json['secondaryText'] as String?,
     );
 
 Map<String, dynamic> _$$StructuredFormattingImplToJson(
