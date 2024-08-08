@@ -9,15 +9,15 @@ part of 'places_model.dart';
 _$PlaceModelImpl _$$PlaceModelImplFromJson(Map<String, dynamic> json) =>
     _$PlaceModelImpl(
       description: json['description'] as String?,
-      matchedSubstrings: (json['matchedSubstrings'] as List<dynamic>?)
+      matchedSubstrings: (json['matched_substrings'] as List<dynamic>?)
           ?.map((e) => MatchedSubstring.fromJson(e as Map<String, dynamic>))
           .toList(),
-      placeId: json['placeId'] as String?,
+      placeId: json['place_id'] as String?,
       reference: json['reference'] as String?,
-      structuredFormatting: json['structuredFormatting'] == null
+      structuredFormatting: json['structured_formatting'] == null
           ? null
           : StructuredFormatting.fromJson(
-              json['structuredFormatting'] as Map<String, dynamic>),
+              json['structured_formatting'] as Map<String, dynamic>),
       terms: (json['terms'] as List<dynamic>?)
           ?.map((e) => Term.fromJson(e as Map<String, dynamic>))
           .toList(),

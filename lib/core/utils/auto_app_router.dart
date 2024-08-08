@@ -17,11 +17,11 @@ class AppRouter extends _$AppRouter {
   RouteType get defaultRouteType => const RouteType.material();
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: OtpRoute.page, initial: true),
-        AutoRoute(page: ProfileRoute.page),
         AutoRoute(
-          page: MapRoute.page,
+          page: OtpRoute.page,
         ),
+        AutoRoute(page: ProfileRoute.page),
+        AutoRoute(page: MapRoute.page, initial: true),
         AutoRoute(page: NotificationDetailsRoute.page),
       ];
 }

@@ -13,10 +13,11 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:opt_page/core/injection/register_module.dart' as _i649;
 import 'package:opt_page/core/utils/auto_app_router.dart' as _i472;
-import 'package:opt_page/features/map/data/data_resources/remote/map_dio.dart'
-    as _i834;
+import 'package:opt_page/features/map/data/data_resources/remote/map_client.dart'
+    as _i88;
 import 'package:opt_page/features/map/data/repository/map_repo_imp.dart'
     as _i618;
+import 'package:opt_page/features/map/presentation/bloc/map_bloc.dart' as _i517;
 import 'package:opt_page/features/otp/data/data_resources/remote/rest_client.dart'
     as _i0;
 import 'package:opt_page/features/otp/data/repository/otp_repo_imp.dart'
@@ -53,6 +54,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i0.RestClient>(() => registerModule.restClient);
     gh.singleton<_i839.SharedPreferencesProvider>(
         () => registerModule.sharedPref);
+    gh.singleton<_i88.GooglePlacesApi>(() => registerModule.googlePlacesApi);
     gh.singleton<_i472.AppRouter>(() => _i472.AppRouter());
     gh.factory<_i199.OtpRepoImp>(() => _i199.OtpRepoImp(
           gh<_i0.RestClient>(),
@@ -62,17 +64,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i112.GetProfileUsecase(gh<_i322.ProfileRepo>()));
     gh.factory<_i527.AppBloc>(
         () => _i527.AppBloc(gh<_i839.SharedPreferencesProvider>()));
-    gh.factory<_i834.GooglePlacesApi>(
-        () => _i834.GooglePlacesApi(gh<_i361.Dio>()));
-    gh.factory<_i452.OtpCubit>(() => _i452.OtpCubit(gh<_i199.OtpRepoImp>()));
     gh.factory<_i618.MapRepoImp>(
-        () => _i618.MapRepoImp(gh<_i834.GooglePlacesApi>()));
+        () => _i618.MapRepoImp(gh<_i88.GooglePlacesApi>()));
+    gh.factory<_i452.OtpCubit>(() => _i452.OtpCubit(gh<_i199.OtpRepoImp>()));
     gh.factory<_i562.ProfileRepoImp>(() => _i562.ProfileRepoImp(
           gh<_i199.OtpRepoImp>(),
           gh<_i642.ProfileLocalData>(),
         ));
     gh.factory<_i994.ProfileBloc>(
         () => _i994.ProfileBloc(gh<_i562.ProfileRepoImp>()));
+    gh.factory<_i517.MapBloc>(() => _i517.MapBloc(gh<_i618.MapRepoImp>()));
     return this;
   }
 }
